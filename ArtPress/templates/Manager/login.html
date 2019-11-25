@@ -13,10 +13,13 @@
         return null; //返回参数值
     }
 
+    // 密码错误特效
     $(document).ready(function () {
         console.log(getUrlParam('lgstatus'));
 
         if (getUrlParam('lgstatus') === "fail") {
+            $("#username").addClass("mdui-textfield-invalid");
+
             for (let i = 1; i <= 3; i++) {
                 let distance = (20 / i);
                 $("#login-card").animate({left: distance + "px"}, 100);
@@ -25,7 +28,12 @@
             $("#login-card").animate({left: "0"}, 100);
 
         }
-    })
+    });
+
+
+    function removeTip() {
+        $("#username").removeClass("mdui-textfield-invalid");
+    }
 
 </script>
 
@@ -39,11 +47,13 @@
       <div class="mdui-card-content">
         <form method="post">
           {% csrf_token %}
-          <div class="mdui-textfield">
+          <div class="mdui-textfield" id="username" onclick="removeTip();">
             <input class="mdui-textfield-input" type="text" placeholder="Username" name="username"/>
+            <div class="mdui-textfield-error">账户与密码不匹配！</div>
           </div>
-          <div class="mdui-textfield">
+          <div class="mdui-textfield" id="password">
             <input class="mdui-textfield-input" type="password" placeholder="Password" name="password"/>
+            <div class="mdui-textfield-error"></div>
           </div>
           <div class="mdui-textfield">
             <button class="mdui-btn mdui-color-theme-700 mdui-ripple">登录</button>
