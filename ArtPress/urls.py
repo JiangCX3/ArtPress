@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 import Front.views
+import Manager.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Front.views.index),
+
+    path('ap-manager/', Manager.views.ap_manager),
+    path('ap-manager/home/', Manager.views.home),
 ]
