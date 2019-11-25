@@ -1,6 +1,3 @@
-# ArtPress
-![ArtPress][base64cover_img]
+![ArtPress](./documents/images/artpress-logo-small.png)
 
 
-
-[base64cover_img]
