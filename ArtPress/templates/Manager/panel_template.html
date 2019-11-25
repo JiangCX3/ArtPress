@@ -22,13 +22,13 @@
       <i class="mdui-icon material-icons">menu</i>
     </a>
     <a href="/ap-manager/home" class="mdui-typo-headline">
-      Home
+      {% block bar-title %} TITLE {% endblock %}
     </a>
 
     <div class="mdui-toolbar-spacer"></div>
 
     <p>
-      JiangCX3
+      {{ user }}
     </p>
     <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
     <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>

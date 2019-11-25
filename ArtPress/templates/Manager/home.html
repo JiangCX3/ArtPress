@@ -1,6 +1,7 @@
 {% extends "Manager/panel_template.html" %}
 
-{% block title %} HOME {% endblock %}
+{% block title %} 控制面板 {% endblock %}
+{% block bar-title %} 控制面板 {% endblock %}
 
 {% block content %}
 <div class="mdui-row">
@@ -10,12 +11,13 @@
         <img src="/static/images/card.jpg"/>
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">Title</div>
+            <div class="mdui-card-primary-title">欢迎使用ArtPress！</div>
             <div class="mdui-card-primary-subtitle">Subtitle</div>
           </div>
           <div class="mdui-card-actions">
             <button class="mdui-btn mdui-ripple mdui-ripple-white">action 1</button>
             <button class="mdui-btn mdui-ripple mdui-ripple-white">action 2</button>
+            <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">close</i></button>
           </div>
         </div>
       </div>
