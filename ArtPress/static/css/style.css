@@ -1,8 +1,51 @@
-*{
+* { /* 建议：千万不要使用*通配符*来使页面页边距消失，建议使用body */
     margin: 0;
     padding: 0;
 }
-.left-menubar{
-    height: 100%;
-    width: 200px;
+
+/*  建议这样，如果你接受建议，请取消注释。
+body {
+    margin: 0;
+    padding: 0;
+}
+*/
+
+/* main content内容区域布局，用于给页面内容区域一个容器 */
+.main-content {
+    width: 1200px;
+    /* 下面两行代码是一个很方便让div居中的方法，本本记好哦 */
+    margin-right: auto;
+    margin-left: auto;
+
+    /*border: 1px solid #000000;*/
+
+}
+
+/* 首页布局 */
+
+/*
+一个利于代码管理的小建议：
+如果一个class是专门为某一页面的某一元件写的，那么建议你用这样命名：页面名称-类名
+就比如首页上的浮动菜单栏：index-floatmenu
+
+因为你写left-menubar的命名方式不是很理想，我帮你注释掉重新写了:-)
+
+对了，一定要记得写注释呀
+*/
+
+/*.left-menubar {*/
+/*height: 100%;*/
+/*width: 200px;*/
+/*}*/
+
+.index-floatmenu {
+    width: 300px;
+    position: fixed;
+    top: 100px;
+}
+
+/* 首页的一般内容区，给菜单栏留了白 */
+.index-common-content {
+    padding-left: 310px;
+    padding-top: 100px;
 }
