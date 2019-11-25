@@ -26,6 +26,11 @@ urlpatterns = [
     path('ap-manager/', Manager.views.ap_manager),
     path('ap-manager/home/', Manager.views.home),
     path('ap-manager/user/out/', Manager.views.out),
+<<<<<<< HEAD
     path('ap-manager/user/login/', Manager.views.login),
     path('ap-manager/user/register/', Manager.views.register),
+=======
+    path('ap-manager/user/login/', Manager.views.login_p),
+    path('ap-manager/user/register/', Manager.views.register_p),
+>>>>>>> fa04cec67d2183800edc1645478a2b2a4e2521de
 ]
