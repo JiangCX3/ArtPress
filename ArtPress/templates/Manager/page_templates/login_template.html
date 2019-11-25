@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ArtPress - {% block title %} TITLE {% endblock %}</title>
+
+  <link rel="stylesheet" href="/static/manager/css/mdui.min.css">
+  <script src="/static/manager/js/mdui.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<script>
+    var inst = new mdui.Drawer("#drawer");
+</script>
+
+<body class="mdui-theme-primary-blue-grey mdui-theme-accent-green mdui-color-grey-50">
+
+<!--顶部条-->
+<div class="mdui-appbar">
+  <div class="mdui-toolbar mdui-color-theme-900">
+    <a href="/ap-manager/home" class="mdui-typo-headline">
+      {% block bar-title %} TITLE {% endblock %}
+    </a>
+  </div>
+</div>
+
+<div class="mdui-container">
+  <div style="padding: 20px 0">
+    {% block content %}
+    <p>base</p>
+    {% endblock %}
+  </div>
+</div>
+</body>
+</html>
