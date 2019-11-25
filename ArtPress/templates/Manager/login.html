@@ -8,15 +8,16 @@
   <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
     <div class="mdui-card" style="padding: 20px 0">
       <div class="mdui-card-header">
-        <img src="/static/images/logo-full.svg" width="260" class="mdui-center">
+        <img src="/static/images/logo-full.svg" class="mdui-center" style="width: 80%">
       </div>
       <div class="mdui-card-content">
-        <form action="/">
+        <form method="post">
+          {% csrf_token %}
           <div class="mdui-textfield">
-            <input class="mdui-textfield-input" type="text" placeholder="Username"/>
+            <input class="mdui-textfield-input" type="text" placeholder="Username" name="username"/>
           </div>
           <div class="mdui-textfield">
-            <input class="mdui-textfield-input" type="password" placeholder="Username"/>
+            <input class="mdui-textfield-input" type="password" placeholder="Password" name="password"/>
           </div>
           <div class="mdui-textfield">
             <button class="mdui-btn mdui-color-theme-700 mdui-ripple">登录</button>
@@ -25,7 +26,6 @@
         </form>
       </div>
     </div>
-
   </div>
 </div>
 
