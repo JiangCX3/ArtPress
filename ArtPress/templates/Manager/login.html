@@ -4,9 +4,35 @@
 {% block bar-title %} 登录 {% endblock %}
 
 {% block content %}
+<script>
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r !== null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+
+    $(document).ready(function () {
+        console.log(getUrlParam('lgstatus'));
+
+        if (getUrlParam('lgstatus') === "fail") {
+            for (let i = 1; i <= 3; i++) {
+                let distance = (20 / i);
+                $("#login-card").animate({left: distance + "px"}, 100);
+                $("#login-card").animate({left: "-" + distance + "px"}, 100);
+            }
+            $("#login-card").animate({left: "0"}, 100);
+
+        }
+    })
+
+</script>
+
+
 <div class="mdui-row">
   <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
-    <div class="mdui-card" style="padding: 20px 0">
+    <div class="mdui-card" style="padding: 20px 0" id="login-card">
       <div class="mdui-card-header">
         <img src="/static/images/logo-full.svg" class="mdui-center" style="width: 80%">
       </div>
