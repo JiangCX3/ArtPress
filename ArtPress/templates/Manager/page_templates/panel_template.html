@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ArtPress Panel - {% block title %} TITLE {% endblock %}</title>
+    <meta http-equiv='Content-type' content='text/htm'>
+    <meta charset="UTF-8">
+    <title>ArtPress Panel - {% block title %} TITLE {% endblock %}</title>
 
-  <link rel="stylesheet" href="/static/manager/css/mdui.min.css">
-  <script src="/static/manager/js/mdui.min.js"></script>
-  <script src="/static/js/jquery.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/static/manager/css/mdui.min.css">
+    <script src="/static/manager/js/mdui.min.js"></script>
+    {#    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">#}
+    {#    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>#}
+
+    <script src="/static/manager/js/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <script>
@@ -17,68 +19,67 @@
 <body class="mdui-theme-primary-blue-grey mdui-theme-accent-green mdui-drawer-body-left">
 
 
-
 <!--顶部条-->
 <div class="mdui-appbar">
-  <div class="mdui-toolbar mdui-color-theme-900">
-    <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
-      <i class="mdui-icon material-icons">menu</i>
-    </a>
-    <a href="/ap-manager/home" class="mdui-typo-headline">
-      {% block bar-title %} TITLE {% endblock %}
-    </a>
+    <div class="mdui-toolbar mdui-color-theme-900">
+        <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
+            <i class="mdui-icon material-icons">menu</i>
+        </a>
+        <a href="/ap-manager/home" class="mdui-typo-headline">
+            {% block bar-title %} TITLE {% endblock %}
+        </a>
 
-    <div class="mdui-toolbar-spacer"></div>
+        <div class="mdui-toolbar-spacer"></div>
 
-    <p>
-      {{ user }}
-    </p>
-    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
-      <i class="mdui-icon material-icons">search</i>
-    </a>
-    <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
-      <i class="mdui-icon material-icons">directions_run</i>
-    </a>
-  </div>
+        <p>
+            {{ user }}
+        </p>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
+            <i class="mdui-icon material-icons">search</i>
+        </a>
+        <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
+            <i class="mdui-icon material-icons">directions_run</i>
+        </a>
+    </div>
 </div>
 
 <!--左侧菜单-->
 <div class="mdui-drawer mdui-color-theme-700" id="drawer">
-  <ul class="mdui-list">
+    <ul class="mdui-list">
 
-    <li style="padding: 20px 19px">
-      <div style="background:url('/static/images/logo-wh-250w.png') no-repeat;background-size:100%;height:20px;width:80%"></div>
-    </li>
+        <li style="padding: 20px 19px">
+            <div style="background:url('/static/images/logo-wh-250w.png') no-repeat;background-size:100%;height:20px;width:80%"></div>
+        </li>
 
-    <li class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">web</i>
-      <div class="mdui-list-item-content">站点</div>
-    </li>
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">web</i>
+            <div class="mdui-list-item-content">站点</div>
+        </li>
 
-    <li class="mdui-divider"></li>
+        <li class="mdui-divider"></li>
 
-    <li class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
-      <div class="mdui-list-item-content">Outbox</div>
-    </li>
-    <li class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">delete</i>
-      <div class="mdui-list-item-content">Trash</div>
-    </li>
-    <li class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">error</i>
-      <div class="mdui-list-item-content">Spam</div>
-    </li>
-  </ul>
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
+            <div class="mdui-list-item-content">Outbox</div>
+        </li>
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">delete</i>
+            <div class="mdui-list-item-content">Trash</div>
+        </li>
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">error</i>
+            <div class="mdui-list-item-content">Spam</div>
+        </li>
+    </ul>
 </div>
 
 
 <div class="mdui-container">
-  <div style="padding: 20px 0">
-    {% block content %}
-    <p>base</p>
-    {% endblock %}
-  </div>
+    <div style="padding: 20px 0">
+        {% block content %}
+            <p>base</p>
+        {% endblock %}
+    </div>
 </div>
 </body>
 </html>

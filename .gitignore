@@ -107,3 +107,5 @@ venv.bak/
 # ide files
 .idea/
 .vscode/
+
+settings.py
