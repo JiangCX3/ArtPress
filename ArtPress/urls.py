@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Front.views.index),
 
+    path('ap-login/', Manager.views.login_jump),
     path('ap-manager/', Manager.views.ap_manager),
     path('ap-manager/home/', Manager.views.home),
     path('ap-manager/user/out/', Manager.views.out),

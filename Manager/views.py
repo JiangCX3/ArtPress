@@ -20,6 +20,10 @@ def out(request):
     return HttpResponseRedirect("/ap-manager/user/login/")
 
 
+def login_jump(request):
+    return HttpResponseRedirect("/ap-manager/user/login/")
+
+
 def login_p(request):
     if request.method == "POST":
         username = request.POST.get('username', None)
@@ -33,7 +37,6 @@ def login_p(request):
                 return HttpResponseRedirect("/ap-manager/home/")
             else:
                 return HttpResponseRedirect("/ap-manager/user/login/?lgstatus=fail")
-
 
     return render(request, 'Manager/login.html', {
         "user": request.user,
