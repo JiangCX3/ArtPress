@@ -107,7 +107,7 @@ WordPress的账户管理系统与插件系统都十分优秀，但是我希望�
 使用git clone或下载ZIP文件并解压来获得Artpress源代码，然后到代码根目录
 （含有manage.py的目录）打开cmd执行命令：`python manage.py runserver localhost:8000`
 
-如果一切没问题，你可能可以看到以下信息：
+如果一切没问题，你应该可以看到以下信息：
 
     Performing system checks...
     
