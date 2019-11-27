@@ -93,7 +93,7 @@
 
 一步一步来，绝壁不会错！
 
-## 在Windows上
+## 在Windows上安装
 ### Step.1 安装Python3.x
 建议Python 3.7.0以上
 
