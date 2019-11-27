@@ -93,7 +93,7 @@
 
 一步一步来，绝壁不会错！
 
-## 在Windows
+## 在Windows上
 ### Step.1 安装Python3.x
 建议Python 3.7.0以上
 
@@ -124,8 +124,8 @@
 ### Step.4 打开浏览器
 访问 [http://localhost:8000/](http://localhost:8000/)，欢迎光临！
 
-## 在Linux
-真正会用Linux的人照着Windows文档都能给他装上（我懒
+## 在Linux上安装
+~~真正会用Linux的人照着Windows文档都能给他装上~~（我懒
 
 
 # 我想参与这个项目！
