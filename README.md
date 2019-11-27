@@ -124,6 +124,10 @@
 ### Step.4 打开浏览器
 访问 [http://localhost:8000/](http://localhost:8000/)，欢迎光临！
 
+## 在Linux
+真正会用Linux的人照着Windows文档都能给他装上（我懒
+
+
 # 我想参与这个项目！
 我们团队目前正在招募中！
 
