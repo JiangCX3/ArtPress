@@ -4,65 +4,62 @@
 {% block bar-title %} 登录 {% endblock %}
 
 {% block content %}
-<script>
+    <script>
 
-    function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-        if (r !== null) return unescape(r[2]);
-        return null; //返回参数值
-    }
-
-    // 密码错误特效
-    $(document).ready(function () {
-        console.log(getUrlParam('lgstatus'));
-
-        if (getUrlParam('lgstatus') === "fail") {
-            $("#username").addClass("mdui-textfield-invalid");
-
-            for (let i = 1; i <= 3; i++) {
-                let distance = (20 / i);
-                $("#login-card").animate({left: distance + "px"}, 100);
-                $("#login-card").animate({left: "-" + distance + "px"}, 100);
-            }
-            $("#login-card").animate({left: "0"}, 100);
-
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r !== null) return unescape(r[2]);
+            return null; //返回参数值
         }
-    });
+
+        // 密码错误特效
+        $(document).ready(function () {
+            if (getUrlParam('lgstatus') === "fail") {
+                $("#username").addClass("mdui-textfield-invalid");
+
+                for (let i = 1; i <= 4; i++) {
+                    let distance = (20 / i);
+                    $("#login-card").animate({left: distance + "px"}, 100);
+                    $("#login-card").animate({left: "-" + distance + "px"}, 100);
+                }
+                $("#login-card").animate({left: "0"}, 100);
+            }
+        });
 
 
-    function removeTip() {
-        $("#username").removeClass("mdui-textfield-invalid");
-    }
+        function removeTip() {
+            $("#username").removeClass("mdui-textfield-invalid");
+        }
 
-</script>
+    </script>
 
 
-<div class="mdui-row">
-  <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
-    <div class="mdui-card" style="padding: 20px 0" id="login-card">
-      <div class="mdui-card-header">
-        <img src="/static/images/logo-full.svg" class="mdui-center" style="width: 80%">
-      </div>
-      <div class="mdui-card-content">
-        <form method="post">
-          {% csrf_token %}
-          <div class="mdui-textfield" id="username" onclick="removeTip();">
-            <input class="mdui-textfield-input" type="text" placeholder="Username" name="username"/>
-            <div class="mdui-textfield-error">账户与密码不匹配！</div>
-          </div>
-          <div class="mdui-textfield" id="password">
-            <input class="mdui-textfield-input" type="password" placeholder="Password" name="password"/>
-            <div class="mdui-textfield-error"></div>
-          </div>
-          <div class="mdui-textfield">
-            <button class="mdui-btn mdui-color-theme-700 mdui-ripple">登录</button>
-            <button class="mdui-btn mdui-ripple">注册</button>
-          </div>
-        </form>
-      </div>
+    <div class="mdui-row" style="padding-top: 15vh;">
+        <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
+            <div class="mdui-card" style="padding: 20px 0" id="login-card">
+                <div class="mdui-card-header">
+                    <img src="/static/images/logo-full.svg" class="mdui-center" style="width: 90%;max-height:120%">
+                </div>
+                <div class="mdui-card-content">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mdui-textfield" id="username" onclick="removeTip();">
+                            <input class="mdui-textfield-input" type="text" placeholder="Username" name="username"/>
+                            <div class="mdui-textfield-error">账户与密码不匹配！</div>
+                        </div>
+                        <div class="mdui-textfield" id="password">
+                            <input class="mdui-textfield-input" type="password" placeholder="Password" name="password"/>
+                            <div class="mdui-textfield-error"></div>
+                        </div>
+                        <div class="mdui-textfield">
+                            <button class="mdui-btn mdui-color-theme-700 mdui-ripple">登录</button>
+                            <button class="mdui-btn mdui-ripple">注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 {% endblock %}
