@@ -1,14 +1,7 @@
-* { /* 建议：千万不要使用*通配符*来使页面页边距消失，建议使用body */
-    margin: 0;
-    padding: 0;
-}
-
-/*  建议这样，如果你接受建议，请取消注释。
 body {
     margin: 0;
-    padding: 0;
 }
-*/
+
 
 /* main content内容区域布局，用于给页面内容区域一个容器 */
 .main-content {
@@ -23,44 +16,39 @@ body {
 
 
 /*图片的样式表*/
-.index-common-content  img{
-    border: 10px solid black;
-}
+/*.index-common-content  img{*/
+/*    border: 10px solid black;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.hightlight-img{
-    width: 45%;
-    float: left;
-    padding: 3px; 
-}
-.right-img{
-    width: 45%;
-    margin-left: 3%;
-    box-shadow:  20px 20px 20px 20px black   inset;
-    padding: 3px; 
-}
+/*.hightlight-img{*/
+/*    width: 45%;*/
+/*    float: left;*/
+/*    padding: 3px;*/
+
+/*}*/
+/*.right-img{*/
+/*    width: 45%;*/
+/*    margin-left: 3%;*/
+/*    box-shadow:  20px 20px 20px 20px black   inset;*/
+/*    padding: 3px;*/
+
+/*}*/
 
 
 /* 首页布局 */
-.floatsearch{
+.floatsearch {
     width: 30%;
-    height:300px;
+    height: 300px;
     background: #39c5bb;
     position: absolute;
     top: -200px;
     left: 35%;
 }
-.floatsearch:hover .left-floatmenu-item-x{
+
+.floatsearch:hover .left-floatmenu-item-x {
     top: 0px;
 }
-/*
-一个利于代码管理的小建议：
-如果一个class是专门为某一页面的某一元件写的，那么建议你用这样命名：页面名称-类名
-就比如首页上的浮动菜单栏：index-floatmenu
-
-因为你写left-menubar的命名方式不是很理想，我帮你注释掉重新写了:-)
-
-对了，一定要记得写注释呀
-*/
 
 /*.left-menubar {*/
 /*height: 100%;*/
@@ -73,14 +61,15 @@ body {
     width: 300px;
     position: fixed;
     top: 100px;
+
 }
 
-ul{
+ul {
     list-style: none;
-    
+
 }
 
-#search{
+#search {
     width: 200px;
     height: 50px;
     font-size: 30px;
@@ -89,22 +78,31 @@ ul{
 .left-floatmenu-item{
     width: 200px;
     height: 30px;
-
+    text-decoration: none;
     padding-top: 10px;
     padding-bottom: 10px;
     transition: background-color 0.2s;
     font-size: 25px;
 }
-.left-floatmenu-item:hover{
+a{
+    text-decoration: none;
+}
+.left-floatmenu-item:hover {
     background: #39c5bb;
 }
 
-.index-floatmenu ul li a{
-    text-decoration: none;
-}
 
 /* 首页的一般内容区，给菜单栏留了白 */
 .index-common-content {
     padding-left: 310px;
     padding-top: 100px;
+}
+
+
+.image-border {
+    width: 40%;
+    border: solid 8px #110f0e;
+    padding: 10px;
+    margin: 2.5%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4) inset;
 }
