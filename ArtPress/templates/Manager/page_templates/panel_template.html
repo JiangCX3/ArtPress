@@ -1,13 +1,13 @@
 <head>
-    <meta http-equiv='Content-type' content='text/htm'>
-    <meta charset="UTF-8">
-    <title>ArtPress Panel - {% block title %} TITLE {% endblock %}</title>
+  <meta http-equiv='Content-type' content='text/htm'>
+  <meta charset="UTF-8">
+  <title>ArtPress Panel - {% block title %} TITLE {% endblock %}</title>
 
-    <link rel="stylesheet" href="/static/manager/css/mdui.min.css">
-    <script src="/static/manager/js/mdui.min.js"></script>
+  <link rel="stylesheet" href="/static/manager/css/mdui.min.css">
+  <script src="/static/manager/js/mdui.min.js"></script>
 
-    <script src="/static/manager/js/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="/static/manager/js/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <script>
@@ -19,104 +19,108 @@
 
 <!--顶部条-->
 <div class="mdui-appbar mdui-color-theme-900 mdui-shadow-0">
-    <div class="mdui-toolbar">
-        <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
-            <i class="mdui-icon material-icons">menu</i>
-        </a>
-        <a href="/ap-manager/home" class="mdui-typo-headline">
-            {% block bar-title %} TITLE {% endblock %}
-        </a>
+  <div class="mdui-toolbar">
+    <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
+      <i class="mdui-icon material-icons">menu</i>
+    </a>
+    <a href="/ap-manager/home" class="mdui-typo-headline">
+      {% block bar-title %} TITLE {% endblock %}
+    </a>
 
-        <div class="mdui-toolbar-spacer"></div>
+    <div class="mdui-toolbar-spacer"></div>
 
-        <p>
-            {{ user }}
-        </p>
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
-            <i class="mdui-icon material-icons">search</i>
-        </a>
-        <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
-            <i class="mdui-icon material-icons">directions_run</i>
-        </a>
-    </div>
+    <p>
+      {{ user }}
+    </p>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
+      <i class="mdui-icon material-icons">search</i>
+    </a>
+    <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
+      <i class="mdui-icon material-icons">directions_run</i>
+    </a>
+  </div>
 </div>
 
 <!--左侧菜单-->
 <div class="mdui-drawer mdui-color-theme-700" id="drawer">
-    <div class="mdui-ast" mdui-collapse="{accordion: true}">
+  <div class="mdui-ast" mdui-collapse="{accordion: true}">
 
-        <a href="/" class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-            <div class="mdui-list-item-content">主页</div>
-        </a>
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">arrow_back</i>
+      <div class="mdui-list-item-content">返回站点</div>
+    </a>
 
-        <a href="/ap-manager/home/" class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">dashboard</i>
-            <div class="mdui-list-item-content">控制面板</div>
-        </a>
+    <a href="/ap-manager/home/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">view_carousel</i>
+      <div class="mdui-list-item-content">媒体库</div>
+    </a>
 
-        <div class="mdui-divider mdui-divider-list"></div>
+    <a href="/ap-manager/home/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">dashboard</i>
+      <div class="mdui-list-item-content">控制面板</div>
+    </a>
 
-        <div class="mdui-collapse-item">
-            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">people</i>
-                <div class="mdui-list-item-content">账户</div>
-                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-            </div>
-            <div class="mdui-collapse-item-body mdui-ast">
-                <a href="#" class="mdui-list-item mdui-ripple">Overview</a>
-                <a href="#" class="mdui-list-item mdui-ripple">Language</a>
-                <a href="#" class="mdui-list-item mdui-ripple">Location</a>
-                <a href="#" class="mdui-list-item mdui-ripple">New vs Returning</a>
-            </div>
-        </div>
-
-        <div class="mdui-collapse-item">
-            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">device_hub</i>
-                <div class="mdui-list-item-content">样式与插件</div>
-                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-            </div>
-            <div class="mdui-collapse-item-body mdui-ast">
-                <a href="#" class="mdui-list-item mdui-ripple">Overview</a>
-                <a href="#" class="mdui-list-item mdui-ripple">All Traffic</a>
-                <a href="#" class="mdui-list-item mdui-ripple">Direct Traffic</a>
-                <a href="#" class="mdui-list-item mdui-ripple">Search Overview</a>
-            </div>
-        </div>
-
-        <div class="mdui-collapse-item">
-            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">touch_app</i>
-                <div class="mdui-list-item-content">设置</div>
-                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-            </div>
-            <div class="mdui-collapse-item-body mdui-ast">
-                <a href="#" class="mdui-list-item mdui-ripple">Overview</a>
-                <a href="#" class="mdui-list-item mdui-ripple">All Pages</a>
-                <a href="#" class="mdui-list-item mdui-ripple">Landing Pages</a>
-                <a href="#" class="mdui-list-item mdui-ripple">Exit Pages</a>
-            </div>
-        </div>
-
-        <div class="mdui-divider mdui-divider-list"></div>
-
-        <a href="#" class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">shopping_cart</i>
-            <div class="mdui-list-item-content">连接Artpress云</div>
-        </a>
-
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+        <div class="mdui-list-item-content">账户</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-ast">
+        <a href="#" class="mdui-list-item mdui-ripple">我</a>
+        <a href="#" class="mdui-list-item mdui-ripple">管理</a>
+        <a href="#" class="mdui-list-item mdui-ripple">权限组</a>
+      </div>
     </div>
+
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">style</i>
+        <div class="mdui-list-item-content">样式与插件</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-ast">
+        <a href="#" class="mdui-list-item mdui-ripple">主题</a>
+        <a href="#" class="mdui-list-item mdui-ripple">插件</a>
+        <a href="#" class="mdui-list-item mdui-ripple">获得插件与主题</a>
+      </div>
+    </div>
+
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">touch_app</i>
+        <div class="mdui-list-item-content">设置</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-ast">
+        <a href="#" class="mdui-list-item mdui-ripple">通用</a>
+        <a href="#" class="mdui-list-item mdui-ripple">站点</a>
+        <a href="#" class="mdui-list-item mdui-ripple">Post</a>
+        <a href="#" class="mdui-list-item mdui-ripple">Exit Pages</a>
+      </div>
+    </div>
+
+    <a href="#" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">cloud</i>
+      <div class="mdui-list-item-content">连接Artpress云</div>
+    </a>
+
+    <a href="#" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">help</i>
+      <div class="mdui-list-item-content">帮助</div>
+    </a>
+
+  </div>
 
 </div>
 
 
 <div class="mdui-container">
-    <div style="padding: 20px 0">
-        {% block content %}
-            <p>base</p>
-        {% endblock %}
-    </div>
+  <div style="padding: 20px 0">
+    {% block content %}
+    <p>base</p>
+    {% endblock %}
+  </div>
 </div>
 </body>
 </html>
