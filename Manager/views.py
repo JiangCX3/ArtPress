@@ -6,6 +6,11 @@ from django.shortcuts import render
 # Create your views here.
 
 def ap_manager(request):
+    # 认证，匿名用户则跳转给登录页面
+    if str(request.user) == "AnonymousUser":
+        return HttpResponseRedirect("/ap-manager/user/login/")
+        # =======
+
     return HttpResponseRedirect("/ap-manager/home/")
 
 
