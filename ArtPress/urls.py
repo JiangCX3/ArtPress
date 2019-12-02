@@ -29,4 +29,16 @@ urlpatterns = [
     path('ap-manager/user/out/', Manager.views.out),
     path('ap-manager/user/login/', Manager.views.login_p),
     path('ap-manager/user/register/', Manager.views.register_p),
+
+    path('ap-manager/user/me', Manager.views.user_me),
+    path('ap-manager/user/manager', Manager.views.user_manager),
+    path('ap-manager/user/group', Manager.views.user_group),
+
+    path('/ap-manager/plugs/templates', Manager.views.plugs_templates),
+    path('/ap-manager/plugs/plugins', Manager.views.plugs_plugins),
+
+    path('/ap-manager/set/common', Manager.views.settings_common),
+    path('/ap-manager/set/site', Manager.views.settings_site),
+    path('/ap-manager/set/post', Manager.views.settings_post),
+    path('/ap-manager/set/safety', Manager.views.settings_safty),
 ]
