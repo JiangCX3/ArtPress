@@ -26,6 +26,7 @@ urlpatterns = [
     path('ap-login/', Manager.views.login_jump),
     path('ap-manager/', Manager.views.ap_manager),
     path('ap-manager/home/', Manager.views.home),
+    path('ap-manager/ap-cloud', Manager.views.artpress_cloud),
     path('ap-manager/user/out/', Manager.views.out),
     path('ap-manager/user/login/', Manager.views.login_p),
     path('ap-manager/user/register/', Manager.views.register_p),
