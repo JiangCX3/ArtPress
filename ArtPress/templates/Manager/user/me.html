@@ -7,17 +7,43 @@
 <div class="mdui-row">
   <div class="mdui-col-xs-12">
     <div class="mdui-card">
-      <div class="mdui-card-media">
-        <img src="/static/images/card.jpg"/>
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">欢迎使用ArtPress！</div>
-            <div class="mdui-card-primary-subtitle">Subtitle</div>
-          </div>
-          <div class="mdui-card-actions">
-            <button class="mdui-btn mdui-ripple mdui-ripple-white">action 1</button>
-            <button class="mdui-btn mdui-ripple mdui-ripple-white">action 2</button>
-            <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">close</i></button>
+      <div class="mdui-tab" mdui-tab>
+        <a href="#myprofile-edit" class="mdui-ripple">编辑资料</a>
+      </div>
+      <!--编辑资料-->
+      <div id="myprofile-edit" class="mdui-p-a-2 mdui-card-content">
+        <div class="mdui-row">
+          <!--Avatar-->
+          <div class="mdui-col-xs-3">
+            <form method="post">
+              <div class="mdui-textfield">
+                <label class="mdui-textfield-label">头像</label>
+                <img src="{{ avatar_path }}" alt="avatar" class="mdui-img-rounded"
+                     style="border:1px rgba(0,0,0,0.18) solid;width:calc(100% - 2px);">
+                <p>
+                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-center">
+                    更新头像
+                  </a>
+                </p>
+              </div>
+
+              <div class="mdui-textfield">
+                <label class="mdui-textfield-label">用户名</label>
+                <input class="mdui-textfield-input" type="text" name="username" value="{{ user }}"/>
+              </div>
+
+              <div class="mdui-textfield">
+                <label class="mdui-textfield-label">密码</label>
+                <input type="password" name="fa-password" style="display: none;"> <!--防止浏览器自动填充-->
+                <input class="mdui-textfield-input" type="password" value="TooYoung¯\_(ツ)_/¯" name="fa-password"
+                       style="pointer-events: none;">
+                <p>
+                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-center">
+                    更新密码
+                  </a>
+                </p>
+              </div>
+            </form>
           </div>
         </div>
       </div>
