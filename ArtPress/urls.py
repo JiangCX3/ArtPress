@@ -43,4 +43,7 @@ urlpatterns = [
     path('ap-manager/set/site/', Manager.views.settings_site),
     path('ap-manager/set/post/', Manager.views.settings_post),
     path('ap-manager/set/safety/', Manager.views.settings_safty),
+
+    # path('test1/', Front.views.test1),
+
 ]
