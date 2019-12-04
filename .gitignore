@@ -109,3 +109,6 @@ venv.bak/
 .vscode/
 
 settings.py
+
+# ArtPress Content Datas
+/static/content/avatar/

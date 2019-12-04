@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ArtPress',
+    'Users',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,9 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'ArtPress/templates'),)
+
+# AbstractUser
+# AUTH_USER_MODEL = "ArtPress.NewUser"
+
+# User Avatar Static Path
+USER_AVATAR_STATIC_PATH = "/static/content/avatar/"

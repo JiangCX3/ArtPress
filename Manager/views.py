@@ -2,6 +2,9 @@ from django.contrib.auth import logout, models, authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
+from Users.models import UserProfile
+from ArtPress import settings
+
 """ Manly """
 
 
@@ -67,8 +70,16 @@ def user_me(request):
         return HttpResponseRedirect("/ap-manager/user/login/")
     # =======
 
+
+    # == Get User Profiles ==
+
+    # Assembly avatar file path
+    up = UserProfile.objects.get(user=request.user)
+    avatar_path = settings.USER_AVATAR_STATIC_PATH + up.avatar_filename
+
     return render(request, 'Manager/user/me.html', {
         "user": request.user,
+        "avatar_path": avatar_path,
     })
 
 
