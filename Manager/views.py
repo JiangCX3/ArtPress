@@ -109,6 +109,8 @@ def user_me(request):
         userprofile.save()
         user.save()
 
+        HttpResponseRedirect("/ap-manager/user/me/")
+
     return render(request, 'Manager/user/me.html', {
         "user": request.user,
         "avatar_path": avatar_path,

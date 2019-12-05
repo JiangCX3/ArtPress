@@ -1,3 +1,4 @@
+<html>
 <head>
   <meta http-equiv='Content-type' content='text/htm'>
   <meta charset="UTF-8">
@@ -15,33 +16,54 @@
 
 <script>
     var inst = new mdui.Drawer("#drawer");
+
+    // Loading Feedback
+    function loading_feedback_in() {
+        $('.loading-feedback').fadeIn(100);
+        $('main').addClass("blur");
+        $(".loading-feedback img").animate({opacity: 1}, 1000);
+
+        //logo shine animate
+        for (let i = 1; i <= 999; i++) {
+            $(".loading-feedback img").animate({opacity: 0.5}, 1000);
+            $(".loading-feedback img").animate({opacity: 1}, 300);
+        }
+    }
+
 </script>
 
+<style>
+  .loading-feedback {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    z-index: 5000;
+    display: none;
+  }
+
+  .loading-feedback img {
+    position: relative;
+    left: calc(100vw - 200px - 40px);
+    top: calc(100vh - 90px - 30px);
+    opacity: 0;
+  }
+
+  .blur {
+    -webkit-filter: blur(5px); /* Chrome, Opera */
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+</style>
+
 <body class="mdui-theme-primary-blue-grey mdui-theme-accent-green mdui-drawer-body-left">
-
-
-<!--顶部条-->
-<div class="mdui-appbar mdui-color-theme-900 mdui-shadow-0">
-  <div class="mdui-toolbar">
-    <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
-      <i class="mdui-icon material-icons">menu</i>
-    </a>
-    <a href="/ap-manager/home" class="mdui-typo-headline">
-      {% block bar-title %} TITLE {% endblock %}
-    </a>
-
-    <div class="mdui-toolbar-spacer"></div>
-
-    <p>
-      {{ user }}
-    </p>
-    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
-      <i class="mdui-icon material-icons">search</i>
-    </a>
-    <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
-      <i class="mdui-icon material-icons">directions_run</i>
-    </a>
-  </div>
+<!--Loading Feedback-->
+<div class="loading-feedback">
+  <img src="/static/images/logo-w.svg" width="200px">
 </div>
 
 <!--左侧菜单-->
@@ -112,18 +134,42 @@
       <i class="mdui-list-item-icon mdui-icon material-icons">help</i>
       <div class="mdui-list-item-content">帮助</div>
     </a>
-
-  </div>
-
-</div>
-
-
-<div class="mdui-container">
-  <div style="padding: 20px 0">
-    {% block content %}
-    <p>base</p>
-    {% endblock %}
   </div>
 </div>
+
+<main>
+  <!--顶部条-->
+  <div class="mdui-appbar mdui-color-theme-900 mdui-shadow-0">
+    <div class="mdui-toolbar">
+      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
+        <i class="mdui-icon material-icons">menu</i>
+      </a>
+      <a href="/ap-manager/home" class="mdui-typo-headline">
+        {% block bar-title %} TITLE {% endblock %}
+      </a>
+
+      <div class="mdui-toolbar-spacer"></div>
+
+      <p>
+        {{ user }}
+      </p>
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
+        <i class="mdui-icon material-icons">search</i>
+      </a>
+      <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
+        <i class="mdui-icon material-icons">directions_run</i>
+      </a>
+    </div>
+  </div>
+
+  <div class="mdui-container">
+    <div style="padding: 20px 0">
+      {% block content %}
+        <p>base</p>
+      {% endblock %}
+    </div>
+  </div>
+</main>
+
 </body>
 </html>

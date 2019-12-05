@@ -4,6 +4,15 @@
 {% block bar-title %} 我的账户 {% endblock %}
 
 {% block content %}
+  <script>
+      function submit() {
+          loading_feedback_in();
+          setTimeout(function () {
+              $("#base-profile").submit()
+          }, 10000);
+      }
+  </script>
+
   <div class="mdui-row">
     <div class="mdui-col-xs-12">
       <div class="mdui-card">
@@ -18,7 +27,7 @@
         <div id="myprofile-base" class="mdui-p-a-2 mdui-card-content">
           <div class="mdui-row">
             <div class="mdui-col-xs-4 mdui-col-offset-xs-3">
-              <form action="" method="post">
+              <form action="" method="post" id="base-profile">
                 {% csrf_token %}
                 {# 用于标记修改内容的标签 #}
                 <input type="text" name="type" value="base" style="display:none;">
@@ -51,9 +60,9 @@
                 </div>
 
                 <div class="mdui-textfield mdui-col-xs-12">
-                  <button class="mdui-btn mdui-btn-block mdui-color-theme">
+                  <a class="mdui-btn mdui-btn-block mdui-color-theme" onclick="submit();">
                     提交
-                  </button>
+                  </a>
                 </div>
 
               </form>
