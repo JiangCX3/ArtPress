@@ -8,8 +8,63 @@
   <div class="mdui-col-xs-12">
     <div class="mdui-card">
       <div class="mdui-tab" mdui-tab>
+        <a href="#myprofile-base" class="mdui-ripple">基本资料</a>
         <a href="#myprofile-edit" class="mdui-ripple">编辑资料</a>
+        <a href="#myprofile-debug" class="mdui-ripple">技术信息</a>
       </div>
+      <!--基本资料-->
+      <div id="myprofile-base" class="mdui-p-a-2 mdui-card-content">
+        <div class="mdui-row">
+          <div class="mdui-col-xs-4 mdui-col-offset-xs-3">
+            <form action="">
+              <div class="mdui-textfield mdui-col-xs-12">
+                <label class="mdui-textfield-label">用户名</label>
+                <input class="mdui-textfield-input" type="text" name="username" value="{{ user }}"/>
+                <div class="mdui-typo-caption-opacity">
+                  用户名作为你的登录名，不会显示在公共区域，请注意保护好用户名的安全。
+                </div>
+              </div>
+
+              <div class="mdui-textfield mdui-col-xs-6">
+                <label class="mdui-textfield-label">First Name</label>
+                <input class="mdui-textfield-input" type="text" name="first-name" value="{{ user.first_name }}"/>
+              </div>
+
+              <div class="mdui-textfield mdui-col-xs-6">
+                <label class="mdui-textfield-label">Last Name</label>
+                <input class="mdui-textfield-input" type="text" name="last-name" value="{{ user.last_name }}"/>
+              </div>
+
+
+              <div class="mdui-textfield mdui-col-xs-12">
+                <label class="mdui-textfield-label">昵称</label>
+                <input class="mdui-textfield-input" type="text" name="nick-name" value="{{ user.profile.nickname }}"/>
+                <div class="mdui-typo-caption-opacity">
+                  社交时使用的昵称，您可以随时更改他。
+                </div>
+              </div>
+
+              <div class="mdui-textfield mdui-col-xs-12">
+                <button class="mdui-btn mdui-btn-block mdui-color-theme">
+                  提交
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="mdui-col-xs-2">
+            <img src="{{ avatar_path }}" alt="avatar" class="mdui-img-rounded"
+                 style="border:1px rgba(0,0,0,0.18) solid;width:calc(100% - 2px);">
+            <div class="mdui-textfield">
+              <a href="javascript:void(0)" class="mdui-btn mdui-center">
+                更新头像
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!--编辑资料-->
       <div id="myprofile-edit" class="mdui-p-a-2 mdui-card-content">
         <div class="mdui-row">
@@ -21,15 +76,14 @@
                 <img src="{{ avatar_path }}" alt="avatar" class="mdui-img-rounded"
                      style="border:1px rgba(0,0,0,0.18) solid;width:calc(100% - 2px);">
                 <p>
-                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-center">
+                  <a href="javascript:void(0)" class="mdui-btn mdui-center">
                     更新头像
                   </a>
                 </p>
               </div>
 
-              <div class="mdui-textfield">
-                <label class="mdui-textfield-label">用户名</label>
-                <input class="mdui-textfield-input" type="text" name="username" value="{{ user }}"/>
+              <div class="mdui-typo">
+                <hr/>
               </div>
 
               <div class="mdui-textfield">
@@ -38,12 +92,61 @@
                 <input class="mdui-textfield-input" type="password" value="TooYoung¯\_(ツ)_/¯" name="fa-password"
                        style="pointer-events: none;">
                 <p>
-                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-center">
+                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme">
                     更新密码
                   </a>
                 </p>
               </div>
+
+              <div class="mdui-textfield">
+                <label class="mdui-textfield-label">邮箱</label>
+                <input type="password" name="fa-password" style="display: none;"> <!--防止浏览器自动填充-->
+                <input class="mdui-textfield-input" type="text" value="{{ user.email }}" name="email"
+                       style="pointer-events: none;">
+                <p>
+                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme">
+                    更新邮箱
+                  </a>
+                </p>
+              </div>
+
+              <div class="mdui-typo">
+                <hr/>
+              </div>
+
+              <div class="mdui-textfield">
+                <label class="mdui-textfield-label">用户名</label>
+                <input class="mdui-textfield-input" type="text" name="username" value="{{ user }}"/>
+              </div>
+
             </form>
+          </div>
+        </div>
+      </div>
+
+      <!--技术信息-->
+      <div id="myprofile-debug" class="mdui-p-a-2 mdui-card-content">
+        <div class="mdui-row">
+          <div class="mdui-col-xs-2 ">
+            <img src="{{ avatar_path }}" alt="avatar" class="mdui-img-rounded"
+                 style="border:1px rgba(0,0,0,0.18) solid;width:calc(100% - 2px);">
+          </div>
+
+          <div class="mdui-col-xs-10">
+            <div class="mdui-typo">
+              <h1>账户技术信息</h1>
+              <p>
+                UID：{{ user.id }} <br>
+                用户名：{{ user }} <br>
+                邮箱：{{ user.email }} (此邮箱只能用于登录用，不会显示在公共区域)<br>
+                昵称：{{ user.profile.nickname }} <br>
+                First Name：{{ user.first_name }} <br>
+                Last Name：{{ user.last_name }} <br>
+                注册日期：{{ user.date_joined }} <br>
+                上次登录：{{ user.last_login }} <br>
+                密码：呵呵 <br>
+              </p>
+            </div>
           </div>
         </div>
       </div>
