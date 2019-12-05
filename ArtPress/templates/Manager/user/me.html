@@ -35,7 +35,8 @@
 
                 <div class="mdui-textfield mdui-col-xs-12">
                   <label class="mdui-textfield-label">Bio</label>
-                  <textarea class="mdui-textfield-input" rows="4" maxlength="512">{{ user.profile.bio }}</textarea>
+                  <textarea class="mdui-textfield-input" rows="4" maxlength="512"
+                            name="bio">{{ user.profile.bio }}</textarea>
                   <div class="mdui-typo-caption-opacity">
                     简单地介绍一下你自己吧。
                   </div>
@@ -43,7 +44,7 @@
 
                 <div class="mdui-textfield mdui-col-xs-12">
                   <label class="mdui-textfield-label">URL</label>
-                  <input class="mdui-textfield-input" type="text" name="last-name" value="{{ user.profile.url }}"/>
+                  <input class="mdui-textfield-input" type="text" name="url" value="{{ user.profile.url }}"/>
                   <div class="mdui-typo-caption-opacity">
                     您的URL。这里可以是您的主页、博客等等的首页地址。
                   </div>
