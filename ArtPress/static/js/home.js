@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#search-btn").onclick(function(){
+    $("#search-btn").click(function(){
         $("#search-div").addClass("#search-div");
     });
 });
