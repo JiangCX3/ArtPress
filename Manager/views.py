@@ -77,6 +77,40 @@ def user_me(request):
     up = UserProfile.objects.get(user=request.user)
     avatar_path = settings.USER_AVATAR_STATIC_PATH + up.avatar_filename
 
+    """Post"""
+    if request.method == "POST":
+        # new一个userprofile 字段
+        userprofile = UserProfile.objects.get(user_id=request.user.id)
+        user = request.user
+
+        # 这是根据标签来分类的
+        content_type = request.POST.get('type')
+        if content_type == "base":
+            """ Base Profile """
+            f_name = request.POST.get('first-name')
+            l_name = request.POST.get('last-name')
+            bio = request.POST.get('bio')
+            url = request.POST.get('url')
+
+            # 检查长度
+            if len(bio) >= 512:
+                raise RuntimeError('Bio length is over 512!')
+
+            if len(url) >= 128:
+                raise RuntimeError('URL length is over 512!')
+
+            # 写入user.profile
+
+            userprofile.bio = bio
+            userprofile.url = url
+            user.first_name = f_name
+            user.last_name = l_name
+
+        userprofile.save()
+        user.save()
+
+        HttpResponseRedirect("/ap-manager/user/me/")
+
     return render(request, 'Manager/user/me.html', {
         "user": request.user,
         "avatar_path": avatar_path,
