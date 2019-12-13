@@ -22,18 +22,13 @@ h1 {
     font-style: italic;
 }
 
-/* main content内容区域布局，用于给页面内容区域一个容器 */
 .main-content {
     width: 1200px;
-    /* 下面两行代码是一个很方便让div居中的方法，本本记好哦 */
     margin: 0 auto;
-    /*border: 1px solid #000000;*/
-
 }
 
 /* 首页布局 */
 .floatsearch {
-    text-shadow: 1px 1px 1px 1px #ffffff;
     width: 30%;
     height: 300px;
     background: #39c5bb;
@@ -53,7 +48,7 @@ h1 {
     width: 300px;
     position: fixed;
     top: 50px;
-
+    text-shadow: 0px 0 100px rgba(255, 255, 255, 0.3);
 }
 
 ul {
@@ -128,13 +123,14 @@ a {
 }
 
 .image-full-width {
-    position: absolute;
-    left: 10vw;
-    padding: 50px;
+    padding: 50px 22px;
 }
 
 .image-full-width img {
-    width: calc(100vw - 20vw);
+    position: absolute;
+    /*top:0;*/
+    left: 10vw;
+    width: 80vw;
 }
 
 /*post的主图及介绍文字*/
