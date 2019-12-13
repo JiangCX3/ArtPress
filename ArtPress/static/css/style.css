@@ -1,8 +1,24 @@
+@import url('/static/fonts/Baskervville-Regular.ttf');
+
 body {
     margin: 0;
 }
+
+/*删除typo样式*/
+.remove-typo {
+    font-family: unset !important;
+}
+
+p, h1, h2, h3, h4, .typo-font {
+    font-family: 'Baskervville', serif;
+}
+
+h1 {
+    font-size: 50px;
+}
+
 /*部分通用文字属性*/
-.bookname{
+.bookname {
     font-style: italic;
 }
 
@@ -10,35 +26,14 @@ body {
 .main-content {
     width: 1200px;
     /* 下面两行代码是一个很方便让div居中的方法，本本记好哦 */
-    margin:0 auto;
+    margin: 0 auto;
     /*border: 1px solid #000000;*/
 
 }
 
-
-/*图片的样式表*/
-/*.index-common-content  img{*/
-/*    border: 10px solid black;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*.hightlight-img{*/
-/*    width: 45%;*/
-/*    float: left;*/
-/*    padding: 3px;*/
-
-/*}*/
-/*.right-img{*/
-/*    width: 45%;*/
-/*    margin-left: 3%;*/
-/*    box-shadow:  20px 20px 20px 20px black   inset;*/
-/*    padding: 3px;*/
-
-/*}*/
-
-
 /* 首页布局 */
 .floatsearch {
+    text-shadow: 1px 1px 1px 1px #ffffff;
     width: 30%;
     height: 300px;
     background: #39c5bb;
@@ -52,11 +47,6 @@ body {
     top: 0px;
 }
 
-/*.left-menubar {*/
-/*height: 100%;*/
-/*width: 200px;*/
-/*}*/
-
 /*各类工具栏*/
 
 .index-floatmenu {
@@ -65,7 +55,6 @@ body {
     top: 50px;
 
 }
-
 
 ul {
     list-style: none;
@@ -78,7 +67,7 @@ ul {
     font-size: 30px;
 }
 
-.left-floatmenu-item{
+.left-floatmenu-item {
     width: 200px;
     height: 30px;
     text-decoration: none;
@@ -87,7 +76,8 @@ ul {
     transition: background-color 0.2s;
     font-size: 25px;
 }
-.left-floatmenu ul li{
+
+.left-floatmenu ul li {
     width: 180px;
     height: 22px;
     text-decoration: none;
@@ -98,35 +88,36 @@ ul {
     transition: background-color 0.2s;
     font-size: 17px;
 }
-a{
+
+a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
+
 .left-floatmenu-item:hover {
     background: #39c5bb;
 }
-.left-floatmenu ul li:hover{
+
+.left-floatmenu ul li:hover {
     background: #39c5bb;
 }
 
 /*右工具栏，暂未定*/
-.right-floatmenu{
+.right-floatmenu {
     display: none;
 }
-
 
 /* 首页的一般内容区，给菜单栏留了白 */
 .index-common-content {
     padding-left: 310px;
     padding-top: 50px;
 }
+
 /*post的主内容区*/
-.index-post-main-content{
+.index-post-main-content {
     padding-left: 310px;
     padding-top: 180px;
 }
-
-
 
 .image-border {
     width: 40%;
@@ -135,20 +126,34 @@ a{
     margin: 2.5%;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4) inset;
 }
+
+.image-full-width {
+    position: absolute;
+    left: 10vw;
+    padding: 50px;
+}
+
+.image-full-width img {
+    width: calc(100vw - 20vw);
+}
+
 /*post的主图及介绍文字*/
-.post-main-picture img{
+.post-main-picture img {
     width: 1000px;
     margin-left: -200px;
 }
-.post-main-picture div{
+
+.post-main-picture div {
     width: 1000px;
     margin-left: -200px;
 }
-.post-main-picture div header,.post-main-picture div p{
+
+.post-main-picture div header, .post-main-picture div p {
     font-size: 25px;
     text-align: center;
 }
-.post-main-picture div button{
+
+.post-main-picture div button {
     list-style: none;
     border: 1px solid black;
     width: 50px;
@@ -156,6 +161,7 @@ a{
     margin-left: 90%;
     margin-top: 10px;
 }
-.post-commom-picture{
+
+.post-commom-picture {
 
 }
