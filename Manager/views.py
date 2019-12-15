@@ -9,31 +9,16 @@ from ArtPress import settings
 
 
 def ap_manager(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-        # =======
-
     return HttpResponseRedirect("/ap-manager/home/")
 
 
 def home(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
-
     return render(request, 'Manager/home.html', {
         "user": request.user,
     })
 
 
 def artpress_cloud(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
-
     return render(request, 'Manager/artpress-cloud.html', {
         "user": request.user,
     })
@@ -43,34 +28,18 @@ def artpress_cloud(request):
 
 
 def user_group(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
-
     return render(request, 'Manager/user/group.html', {
         "user": request.user,
     })
 
 
 def user_manager(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
-
     return render(request, 'Manager/user/manager.html', {
         "user": request.user,
     })
 
 
 def user_me(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
-
-
     # == Get User Profiles ==
 
     # Assembly avatar file path
@@ -121,10 +90,6 @@ def user_me(request):
 
 
 def plugs_plugins(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
 
     return render(request, 'Manager/plugs/plugins.html', {
         "user": request.user,
@@ -132,10 +97,6 @@ def plugs_plugins(request):
 
 
 def plugs_templates(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
 
     return render(request, 'Manager/plugs/templates.html', {
         "user": request.user,
@@ -146,10 +107,7 @@ def plugs_templates(request):
 
 
 def settings_common(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
+
 
     return render(request, 'Manager/settings/common.html', {
         "user": request.user,
@@ -157,10 +115,6 @@ def settings_common(request):
 
 
 def settings_post(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
 
     return render(request, 'Manager/settings/post.html', {
         "user": request.user,
@@ -168,10 +122,6 @@ def settings_post(request):
 
 
 def settings_safty(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
 
     return render(request, 'Manager/settings/safty.html', {
         "user": request.user,
@@ -179,10 +129,6 @@ def settings_safty(request):
 
 
 def settings_site(request):
-    # 认证，匿名用户则跳转给登录页面
-    if str(request.user) == "AnonymousUser":
-        return HttpResponseRedirect("/ap-manager/user/login/")
-    # =======
 
     return render(request, 'Manager/settings/site.html', {
         "user": request.user,
