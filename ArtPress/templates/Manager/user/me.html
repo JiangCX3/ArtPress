@@ -84,8 +84,30 @@
         <div id="account" class="mdui-p-a-2 mdui-card-content">
           <div class="mdui-row">
             <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
-              <form action="">
-                <div class="mdui-textfield mdui-col-xs-12">
+              <form method="post">
+                {% csrf_token %}
+
+                {# 用于标记修改内容的标签 #}
+                <input type="text" name="type" value="account" style="display:none;">
+
+                {# 邮箱认证 #}
+                <div class="mdui-textfield mdui-col-xs-8">
+                  <label class="mdui-textfield-label">Verify</label>
+                  <input class="mdui-textfield-input" type="text" name="username"/>
+                  <div class="mdui-typo-caption-opacity">
+                    请接受验证邮件，输入验证码以验证您的身份。
+                  </div>
+                </div>
+                <div class="mdui-textfield mdui-col-xs-4">
+                  <label class="mdui-textfield-label" style="opacity:0">0</label>
+                  <a class="mdui-btn mdui-color-theme mdui-btn-block">
+                    发送邮件
+                  </a>
+                </div>
+
+                {# 内容 #}
+                <div class="blur-dis" id="me-account-content">
+                  <div class="mdui-textfield mdui-col-xs-12">
                   <div class="mdui-typo-headline">
                     基本
                   </div>
@@ -151,7 +173,7 @@
                     警告：删除账户后，您的一切都将消失。此操作不可逆转！
                   </div>
                 </div>
-
+                </div>
               </form>
             </div>
           </div>

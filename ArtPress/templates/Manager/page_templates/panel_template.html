@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="/static/manager/css/panel.css">
 
   <script src="/static/manager/js/jquery.min.js"></script>
+  <script src="/static/manager/js/csrf.js"></script>
   <script src="/static/manager/js/mdui.min.js"></script>
-  <script src="/static/manager/js/panel.js"></script>
+  {#  <script src="/static/manager/js/panel.js"></script>#}
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
@@ -28,6 +29,11 @@
             $(".loading-feedback img").animate({opacity: 0.5}, 1000);
             $(".loading-feedback img").animate({opacity: 1}, 300);
         }
+    }
+    
+    {# Send verify email #}
+    function send_verify_email() {
+        
     }
 
 </script>
@@ -58,6 +64,18 @@
     -ms-filter: blur(5px);
     filter: blur(5px);
   }
+
+  /* 专门用于禁用大面积选项 */
+  .blur-dis {
+    opacity: .4;
+
+    filter: grayscale(50%);
+    pointer-events: none;
+
+    transition: background-color 0.2s;
+  }
+
+
 </style>
 
 <body class="mdui-theme-primary-blue-grey mdui-theme-accent-green mdui-drawer-body-left">
