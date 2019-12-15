@@ -13,6 +13,26 @@
       }
   </script>
 
+  {# 邮箱认证 #}
+  <div class="mdui-dialog" id="verify-email-dia">
+    <div class="mdui-dialog-title">
+      通过电子邮件验证您的身份
+    </div>
+    <div class="mdui-dialog-content">
+      <div class="mdui-textfield">
+        <input class="mdui-textfield-input" type="text" name="verifycode" onchange="email_input()">
+        <div class="mdui-typo-caption-opacity">
+          请接受验证邮件，输入验证码以验证您的身份。
+        </div>
+      </div>
+      <div class="mdui-textfield">
+        <a class="mdui-btn mdui-color-theme mdui-btn-block" id="send_email_btn" onclick="send_verify_email()">
+          发送邮件
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="mdui-row">
     <div class="mdui-col-xs-12">
       <div class="mdui-card">
@@ -23,6 +43,7 @@
 
           <a href="#myprofile-debug" class="mdui-ripple">技术信息</a>
         </div>
+
         <!--基本资料-->
         <div id="myprofile-base" class="mdui-p-a-2 mdui-card-content">
           <div class="mdui-row">
@@ -87,92 +108,89 @@
               <form method="post">
                 {% csrf_token %}
 
-                {# 用于标记修改内容的标签 #}
-                <input type="text" name="type" value="account" style="display:none;">
-
-                {# 邮箱认证 #}
-                <div class="mdui-textfield mdui-col-xs-8">
-                  <label class="mdui-textfield-label">Verify</label>
-                  <input class="mdui-textfield-input" type="text" name="username"/>
+                <div class="mdui-textfield mdui-col-xs-12">
+                  <a href="javascript:void(0)" class="mdui-btn mdui-btn-block mdui-color-theme"
+                     mdui-dialog="{target: '#verify-email-dia'}">
+                    验证身份
+                  </a>
                   <div class="mdui-typo-caption-opacity">
-                    请接受验证邮件，输入验证码以验证您的身份。
+                    您可能需要先验证您的身份，然后再更改以下内容。
                   </div>
                 </div>
-                <div class="mdui-textfield mdui-col-xs-4">
-                  <label class="mdui-textfield-label" style="opacity:0">0</label>
-                  <a class="mdui-btn mdui-color-theme mdui-btn-block">
-                    发送邮件
-                  </a>
-                </div>
+
+                {# 用于标记修改内容的标签 #}
+                <input type="text" name="type" value="account" style="display:none;">
+                {# 邮箱验证token #}
+                <input class="email-verify-token" type="text" name="email-verify-token" value="" style="display:none;">
 
                 {# 内容 #}
                 <div class="blur-dis" id="me-account-content">
                   <div class="mdui-textfield mdui-col-xs-12">
-                  <div class="mdui-typo-headline">
-                    基本
+                    <div class="mdui-typo-headline">
+                      基本
+                    </div>
                   </div>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <label class="mdui-textfield-label">ID</label>
-                  <input class="mdui-textfield-input" type="text" name="username" value="{{ user.id }}" disabled>
-                  <div class="mdui-typo-caption-opacity">
-                    您不可以更改您的ID。
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <label class="mdui-textfield-label">ID</label>
+                    <input class="mdui-textfield-input" type="text" value="{{ user.id }}" disabled>
+                    <div class="mdui-typo-caption-opacity">
+                      您不可以更改您的ID。
+                    </div>
                   </div>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <label class="mdui-textfield-label">用户名</label>
-                  <input class="mdui-textfield-input" type="text" name="username" value="{{ user }}"/>
-                  <div class="mdui-typo-caption-opacity">
-                    您的社交名片。
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <label class="mdui-textfield-label">用户名</label>
+                    <input class="mdui-textfield-input" type="text" name="username" value="{{ user }}"/>
+                    <div class="mdui-typo-caption-opacity">
+                      您的社交名片。
+                    </div>
                   </div>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <label class="mdui-textfield-label">Email</label>
-                  <input class="mdui-textfield-input" type="text" name="username" value="{{ user.email }}"/>
-                  <div class="mdui-typo-caption-opacity">
-                    您的邮箱地址。请放心，本邮箱地址不会显示在公共区域。
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <label class="mdui-textfield-label">Email</label>
+                    <input class="mdui-textfield-input" type="text" name="email" value="{{ user.email }}"/>
+                    <div class="mdui-typo-caption-opacity">
+                      您的邮箱地址。请放心，本邮箱地址不会显示在公共区域。
+                    </div>
                   </div>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <button class="mdui-btn mdui-btn-block mdui-color-theme">
-                    提交
-                  </button>
-                </div>
-
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <div class="mdui-typo-headline">
-                    导出账户
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <button class="mdui-btn mdui-btn-block mdui-color-theme">
+                      提交
+                    </button>
                   </div>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <div class="mdui-typo-caption-opacity">
-                    开放导出接口后，您将获得一个压缩文件URL，该URL即日起7天内有效。您可以在有效期内下载您的用户数据。
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <div class="mdui-typo-headline">
+                      导出账户
+                    </div>
                   </div>
-                  <a class="mdui-btn mdui-color-theme">
-                    开放导出接口
-                  </a>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-                  <div class="mdui-typo-headline">
-                    危险区
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <div class="mdui-typo-caption-opacity">
+                      开放导出接口后，您将获得一个压缩文件URL，该URL即日起7天内有效。您可以在有效期内下载您的用户数据。
+                    </div>
+                    <a class="mdui-btn mdui-color-theme">
+                      开放导出接口
+                    </a>
                   </div>
-                </div>
 
-                <div class="mdui-textfield mdui-col-xs-12">
-
-                  <a class="mdui-btn mdui-btn-block mdui-color-red">
-                    删除账户
-                  </a>
-                  <div class="mdui-typo-caption-opacity">
-                    警告：删除账户后，您的一切都将消失。此操作不可逆转！
+                  <div class="mdui-textfield mdui-col-xs-12">
+                    <div class="mdui-typo-headline">
+                      危险区
+                    </div>
                   </div>
-                </div>
+
+                  <div class="mdui-textfield mdui-col-xs-12">
+
+                    <a class="mdui-btn mdui-btn-block mdui-color-red">
+                      删除账户
+                    </a>
+                    <div class="mdui-typo-caption-opacity">
+                      警告：删除账户后，您的一切都将消失。此操作不可逆转！
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
@@ -184,23 +202,33 @@
           <div class="mdui-row">
             <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
               <div class="mdui-textfield mdui-col-xs-12">
-                <label class="mdui-textfield-label">密码</label>
-                <input type="password" name="fa-password" style="display: none;"> <!--防止浏览器自动填充-->
-                <input class="mdui-textfield-input" type="password" value="TooYoung¯\_(ツ)_/¯" name="fa-password"
-                       style="pointer-events:none;opacity:0.3;">
+                <a href="javascript:void(0)" class="mdui-btn mdui-btn-block mdui-color-theme"
+                   mdui-dialog="{target: '#verify-email-dia'}">
+                  验证身份
+                </a>
                 <div class="mdui-typo-caption-opacity">
-                  更新密码后，您可能需要重新登入。
+                  您可能需要先验证您的身份，然后再更改以下内容。
                 </div>
-                <p>
-                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-btn-block">
-                    更新密码
-                  </a>
-                </p>
+              </div>
+              <div class="blur-dis" id="me-account-content">
+                <div class="mdui-textfield mdui-col-xs-12">
+                  <label class="mdui-textfield-label">密码</label>
+                  <input type="password" name="fa-password" style="display: none;"> <!--防止浏览器自动填充-->
+                  <input class="mdui-textfield-input" type="password" value="TooYoung¯\_(ツ)_/¯" name="fa-password"
+                         style="pointer-events:none;opacity:0.3;">
+                  <div class="mdui-typo-caption-opacity">
+                    更新密码后，您可能需要重新登入。
+                  </div>
+                  <p>
+                    <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-btn-block">
+                      更新密码
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
         <!--技术信息-->
         <div id="myprofile-debug" class="mdui-p-a-2 mdui-card-content">
           <div class="mdui-row">

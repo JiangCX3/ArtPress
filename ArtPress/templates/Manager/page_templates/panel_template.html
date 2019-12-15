@@ -30,10 +30,46 @@
             $(".loading-feedback img").animate({opacity: 1}, 300);
         }
     }
-    
+
     {# Send verify email #}
+
     function send_verify_email() {
-        
+        //请求验证码Token
+        $.ajax({
+            dataType: "json",
+            url: "/verify/code/create/",
+            success: function (req) {
+                $(".email-verify-token").val(req.message);
+                emailsent_countdown();
+            }
+        });
+    }
+
+
+    var email_count = {{ setting_email_cooldown }};
+
+    function emailsent_countdown() {
+        if (email_count <= 0) {
+            $("#send_email_btn").text("发送邮件").removeClass("blur-dis");
+        } else {
+            $("#send_email_btn").text(email_count + "秒后重试").addClass("blur-dis");
+
+            setTimeout(function () {
+                emailsent_countdown();
+            }, 1000);
+
+            email_count = email_count - 1;
+        }
+    }
+
+    function email_input() {
+        console.debug(this);
+
+        remove_blur_dis()
+    }
+
+    function remove_blur_dis() {
+        $(".blur-dis").animate({"opacity": 1}, 500).removeClass("blur-dis");
     }
 
 </script>

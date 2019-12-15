@@ -141,3 +141,5 @@ VERIFY_CODE_LIFETIME = 60 * 30
 VERIFY_CODE_LENGTH = 4
 # Set verification code generate cool time to prevent ddos (Second)
 VERIFY_CODE_COOLDOWN = 1
+
+VERIFY_CODE_EMAIL_COOLDOWN = 120
