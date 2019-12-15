@@ -1,7 +1,7 @@
 {% extends "Manager/page_templates/login_template.html" %}
 
-{% block title %} 登录 {% endblock %}
-{% block bar-title %} 登录 {% endblock %}
+{% block title %} 注册 {% endblock %}
+{% block bar-title %} 注册 {% endblock %}
 
 {% block content %}
     <script>
@@ -51,9 +51,21 @@
                             <input class="mdui-textfield-input" type="password" placeholder="Password" name="password"/>
                             <div class="mdui-textfield-error"></div>
                         </div>
+                             <div class="mdui-textfield" id="confirm_password">
+                            <input class="mdui-textfield-input" type="password" placeholder="confirm password" name="pasconfirm_passwordsword"/>
+                            <div class="mdui-textfield-error"></div>
+                        </div>
+                             <div class="mdui-textfield" id="captcha">
+                            <input class="mdui-textfield-input mdui-col-xs-6" type="text" placeholder="captcha" name="captcha"/>
+                                 <img class="mdui-col-xs-6" src="/static/images/logo-full.svg">
+                            <div class="mdui-textfield-error"></div>
+                                 
+                        </div>
+                        
+
                         <div class="mdui-textfield">
-                            <button class="mdui-btn mdui-color-theme-700 mdui-ripple" type="submit">登录</button>
-                            <button class="mdui-btn mdui-ripple" type="button" onclick="window.location.href='../register'">注册</button>
+                            <button class="mdui-btn mdui-color-theme-700 mdui-ripple" type="submit">注册</button>
+                            <button class="mdui-btn mdui-ripple" type="button" onclick="window.location.href ='../login'">登录</button>
                         </div>
                     </form>
                 </div>
