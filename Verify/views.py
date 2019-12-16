@@ -5,7 +5,7 @@ import string
 
 from django.http import HttpResponse
 
-import settings
+from ArtPress import settings
 from Verify.models import VerifyCode
 
 from django.shortcuts import render
