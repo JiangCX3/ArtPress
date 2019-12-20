@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import HttpResponseRedirect
 
 try:
@@ -7,11 +8,16 @@ except ImportError:
 
 
 class LoginMiddleware(MiddlewareMixin):
+    """Manager Login """
 
     def process_request(self, request):
-        if request.path == '/ap-manager/user/login/':
-            return
-        if request.path == '/ap-manager/user/register/':
-            return
-        if request.user.is_anonymous:
-            return HttpResponseRedirect("/ap-manager/user/login/")
+
+        # refuse out of /ap-manager/
+        if re.match("^/ap-manager/", str(request.path)) is not None:
+
+            if request.path == '/ap-manager/user/login/':
+                return
+            if request.path == '/ap-manager/user/register/':
+                return
+            if request.user.is_anonymous:
+                return HttpResponseRedirect("/ap-manager/user/login/")

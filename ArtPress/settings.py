@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ArtPress',
     'Users',
+    'Verify'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,12 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'ArtPress/templates'),)
 
 # User Avatar Static Path
 USER_AVATAR_STATIC_PATH = "/static/content/avatar/"
+
+# Verification code lifetime (Second)
+VERIFY_CODE_LIFETIME = 60 * 30
+# Verification code length (Max: 16)
+VERIFY_CODE_LENGTH = 4
+# Set verification code generate cool time to prevent ddos (Second)
+VERIFY_CODE_COOLDOWN = 1
+
+VERIFY_CODE_EMAIL_COOLDOWN = 120

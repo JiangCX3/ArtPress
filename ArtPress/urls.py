@@ -18,6 +18,7 @@ from django.urls import path
 
 import Front.views
 import Manager.views
+import Verify.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,6 +44,8 @@ urlpatterns = [
     path('ap-manager/set/site/', Manager.views.settings_site),
     path('ap-manager/set/post/', Manager.views.settings_post),
     path('ap-manager/set/safety/', Manager.views.settings_safty),
+
+    path('verify/code/create/', Verify.views.create_verify_code),
 
     # path('test1/', Front.views.test1),
 

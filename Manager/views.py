@@ -98,6 +98,7 @@ def user_me(request):
     return render(request, 'Manager/user/me.html', {
         "user": request.user,
         "avatar_path": avatar_path,
+        "setting_email_cooldown": settings.VERIFY_CODE_EMAIL_COOLDOWN,
     })
 
 
@@ -105,14 +106,12 @@ def user_me(request):
 
 
 def plugs_plugins(request):
-
     return render(request, 'Manager/plugs/plugins.html', {
         "user": request.user,
     })
 
 
 def plugs_templates(request):
-
     return render(request, 'Manager/plugs/templates.html', {
         "user": request.user,
     })
@@ -122,29 +121,24 @@ def plugs_templates(request):
 
 
 def settings_common(request):
-
-
     return render(request, 'Manager/settings/common.html', {
         "user": request.user,
     })
 
 
 def settings_post(request):
-
     return render(request, 'Manager/settings/post.html', {
         "user": request.user,
     })
 
 
 def settings_safty(request):
-
     return render(request, 'Manager/settings/safty.html', {
         "user": request.user,
     })
 
 
 def settings_site(request):
-
     return render(request, 'Manager/settings/site.html', {
         "user": request.user,
     })
