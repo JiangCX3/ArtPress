@@ -84,7 +84,11 @@
         <div id="account" class="mdui-p-a-2 mdui-card-content">
           <div class="mdui-row">
             <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
-              <form action="">
+              <form method="post">
+                {% csrf_token %}
+                {# 用于标记修改内容的标签 #}
+                <input type="text" name="type" value="account" style="display:none;">
+
                 <div class="mdui-textfield mdui-col-xs-12">
                   <div class="mdui-typo-headline">
                     基本
@@ -93,7 +97,7 @@
 
                 <div class="mdui-textfield mdui-col-xs-12">
                   <label class="mdui-textfield-label">ID</label>
-                  <input class="mdui-textfield-input" type="text" name="username" value="{{ user.id }}" disabled>
+                  <input class="mdui-textfield-input" type="text" value="{{ user.id }}" disabled>
                   <div class="mdui-typo-caption-opacity">
                     您不可以更改您的ID。
                   </div>
@@ -109,7 +113,7 @@
 
                 <div class="mdui-textfield mdui-col-xs-12">
                   <label class="mdui-textfield-label">Email</label>
-                  <input class="mdui-textfield-input" type="text" name="username" value="{{ user.email }}"/>
+                  <input class="mdui-textfield-input" type="text" name="email" value="{{ user.email }}"/>
                   <div class="mdui-typo-caption-opacity">
                     您的邮箱地址。请放心，本邮箱地址不会显示在公共区域。
                   </div>

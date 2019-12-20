@@ -52,7 +52,7 @@ def user_me(request):
         userprofile = UserProfile.objects.get(user_id=request.user.id)
         user = request.user
 
-        # 这是根据标签来分类的
+        # This is categorized by content_type tags
         content_type = request.POST.get('type')
         if content_type == "base":
             """ Base Profile """
@@ -61,19 +61,34 @@ def user_me(request):
             bio = request.POST.get('bio')
             url = request.POST.get('url')
 
-            # 检查长度
+            # Check length
             if len(bio) >= 512:
                 raise RuntimeError('Bio length is over 512!')
-
             if len(url) >= 128:
                 raise RuntimeError('URL length is over 512!')
 
-            # 写入user.profile
+            # write to user.profile
 
             userprofile.bio = bio
             userprofile.url = url
             user.first_name = f_name
             user.last_name = l_name
+        elif content_type == "account":
+            """ Account Profile """
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+
+            # Check length
+            if len(username) >= 24:
+                raise RuntimeError('Username length is over 512!')
+            if len(email) >= 128:
+                raise RuntimeError('Email length is over 512!')
+
+            # write
+            user.username = username
+            user.email = email
+
+
 
         userprofile.save()
         user.save()
