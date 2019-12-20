@@ -1,9 +1,11 @@
 from django.contrib.auth import logout, models, authenticate, login
+from django.contrib.auth.hashers import check_password, make_password
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from Users.models import UserProfile
 from ArtPress import settings
+from tools import check_password_safety
 
 """ Manly """
 
@@ -88,7 +90,19 @@ def user_me(request):
             user.username = username
             user.email = email
 
+        elif content_type == "changepasswd":
+            """ Change Password """
+            old_password = request.POST.get("old-password")
+            new_password = request.POST.get("new-password")
 
+            if not check_password(old_password, user.password):
+                return HttpResponseRedirect("/ap-manager/user/me/?msg=old_password_wrong&me_tag=safety")
+
+            # Check new password safety
+            if not check_password_safety(new_password):
+                raise RuntimeError('The new password is not safety!')
+
+            user.password = make_password(new_password)
 
         userprofile.save()
         user.save()
