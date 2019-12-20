@@ -164,6 +164,65 @@
 
         <!--安全-->
         <div id="security" class="mdui-p-a-2 mdui-card-content">
+
+          <!--更新密码模态-->
+          <div class="mdui-dialog" id="change-password">
+            <script>
+                function CheckConfirmPassword() {
+                    console.log($("#new-password").val());
+                    console.log($("#confirm-password").val());
+
+                    if ($("#new-password").val() === $("#confirm-password").val()) {
+                        console.log("true");
+                        $("#confirm-password-div").removeClass("mdui-textfield-invalid");
+                    } else {
+                        console.log("false");
+                        $("#confirm-password-div").addClass("mdui-textfield-invalid");
+                    }
+                }
+
+            </script>
+
+            <div class="mdui-dialog-content">
+              <div class="mdui-dialog-title">更新密码</div>
+              <form method="post">
+                {% csrf_token %}
+                {# 用于标记修改内容的标签 #}
+                <input type="text" name="type" value="account" style="display:none;">
+
+                <div class="mdui-textfield mdui-col-xs-12">
+                  <label class="mdui-textfield-label">旧密码</label>
+                  <input class="mdui-textfield-input" type="password" name="old-password">
+                </div>
+
+                <div class="mdui-textfield mdui-col-xs-12">
+                  <label class="mdui-textfield-label">新密码</label>
+                  <input class="mdui-textfield-input" type="password" name="new-password" id="new-password"
+                         pattern="^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z]).*$" required>
+                  <div class="mdui-typo-caption-opacity">
+                    密码至少8位，且包含大小写字母
+                  </div>
+                </div>
+
+                <div class="mdui-textfield mdui-col-xs-12" id="confirm-password-div">
+                  <label class="mdui-textfield-label">确认密码</label>
+                  <input class="mdui-textfield-input" type="password" name="confirm-password" id="confirm-password"
+                         onkeyup="CheckConfirmPassword()">
+                  <div class="mdui-textfield-error">密码不匹配</div>
+                </div>
+
+                <div class="mdui-textfield mdui-col-xs-12">
+                  <button class="mdui-btn mdui-color-theme mdui-btn-block">
+                    提交
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="mdui-dialog-actions">
+              <button class="mdui-btn mdui-ripple">取消</button>
+            </div>
+          </div>
+
           <div class="mdui-row">
             <div class="mdui-col-xs-4 mdui-col-offset-xs-4">
               <div class="mdui-textfield mdui-col-xs-12">
@@ -175,7 +234,8 @@
                   更新密码后，您可能需要重新登入。
                 </div>
                 <p>
-                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-btn-block">
+                  <a href="javascript:void(0)" class="mdui-btn mdui-color-theme mdui-btn-block"
+                     mdui-dialog="{target: '#change-password'}">
                     更新密码
                   </a>
                 </p>
