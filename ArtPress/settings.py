@@ -129,6 +129,8 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'ArtPress/templates'),)
 
+TEMP_STATIC_DIR = '/static/temp/'
+
 # AbstractUser
 # AUTH_USER_MODEL = "ArtPress.NewUser"
 
@@ -143,3 +145,6 @@ VERIFY_CODE_LENGTH = 4
 VERIFY_CODE_COOLDOWN = 1
 
 VERIFY_CODE_EMAIL_COOLDOWN = 120
+
+# ==== Media Library ====
+MEDIA_LIBRATY_DIR = "medias"

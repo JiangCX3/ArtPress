@@ -7,6 +7,15 @@ from Users.models import UserProfile
 from ArtPress import settings
 from tools import check_password_safety
 
+""" Media Library """
+
+
+def media_library(request):
+    return render(request, 'Manager/media-library.html', {
+
+    })
+
+
 """ Manly """
 
 
