@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from Users.models import UserProfile
 from ArtPress import settings
-from tools import check_password_safety
+from Users.tools import check_password_safety
 
 """ Media Library """
 
