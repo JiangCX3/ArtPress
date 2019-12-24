@@ -3,9 +3,9 @@ from django.contrib.auth.hashers import check_password, make_password
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from Users.models import UserProfile
+from application.Users.models import UserProfile
 from ArtPress import settings
-from Users.tools import check_password_safety
+from application.Users.tools import check_password_safety
 
 """ Media Library """
 

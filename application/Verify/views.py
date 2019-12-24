@@ -6,7 +6,7 @@ import string
 from django.http import HttpResponse
 
 from ArtPress import settings
-from Verify.models import VerifyCode
+from application.Verify.models import VerifyCode
 
 from django.shortcuts import render
 
