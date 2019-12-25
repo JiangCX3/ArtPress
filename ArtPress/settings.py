@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ArtPress',
-    'Users',
-    'Verify'
+    'application.Users',
+    'application.Verify',
+    'application.Manager'
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Manager.login_middleware.LoginMiddleware'
+    'application.Manager.login_middleware.LoginMiddleware'
 ]
 
 ROOT_URLCONF = 'ArtPress.urls'
