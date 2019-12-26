@@ -7,12 +7,13 @@ from application.Users.models import UserProfile
 from ArtPress import settings
 from application.Users.tools import check_password_safety
 
+from application.Manager.media_library_api import *
+
 """ Media Library """
 
 
 def media_library(request):
     return render(request, 'Manager/media-library.html', {
-
     })
 
 
@@ -116,7 +117,7 @@ def user_me(request):
         userprofile.save()
         user.save()
 
-        HttpResponseRedirect("/ap-manager/user/me/")
+        return HttpResponseRedirect("/ap-manager/user/me/")
 
     return render(request, 'Manager/user/me.html', {
         "user": request.user,

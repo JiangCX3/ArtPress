@@ -48,6 +48,10 @@ urlpatterns = [
 
     path('verify/code/create/', application.Verify.views.create_verify_code),
 
+    # Media library APIs
+    # Documents at
+    path('api/medialib/getmymedias/', application.Manager.views.ml_getmy_medias),
+
     # path('test1/', Front.views.test1),
 
 ]
