@@ -1,8 +1,9 @@
 # Artpress API
 Artpress Public APIs
 
-* [Media Library](Media Library)
-    * [`getmymedias`](#apimedialibgetmymedias)
+* [Media Library](#media-library)
+    * [`api/medialib/getmymedias/`](#apimedialibgetmymedias)
+    * [`api/medialib/getmedias/`](#apimedialibgetmedias)
 
 ## Media Library
 
