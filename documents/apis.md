@@ -2,12 +2,12 @@
 Artpress Public APIs
 
 * [Media Library](#media-library)
-    * [`api/medialib/getmymedias/`](#apimedialibgetmymedias)
-    * [`api/medialib/getmedias/`](#apimedialibgetmedias)
+    * [`/api/medialib/getmymedias/`](#apimedialibgetmymedias)
+    * [`/api/medialib/getmedias/`](#apimedialibgetmedias)
 
 ## Media Library
 
-### `api/medialib/getmymedias/`
+### `/api/medialib/getmymedias/`
 Get logged user all medias.
 
 #### Param
@@ -50,7 +50,7 @@ code | explanation
 ----------------------------------------
 
 
-### `api/medialib/getmedias/`
+### `/api/medialib/getmedias/`
 Get somebody medias.
 #### Param
 Method: `Post`
