@@ -1,5 +1,11 @@
 ![ArtPress](./documents/images/artpress-logo-small.png)
 
+# Documents
+
+[中文文档](/readme-zh.md) | [English](/readme.md) | [日本語](/readme-jp.md)
+
+[API Document](/documents/apis.md)
+
 # 什么是Artpress？
 #### 事情是这样的：
 从前有一名摄影师，他使用Wordpress搭建了一个属于自己的摄影网站...
