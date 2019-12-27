@@ -2,7 +2,7 @@
 
 # Documents
 
-[English](/README.md) | [中文文档](/README-zh.md) | [日本語](/README-jp.md)
+[English](/README.md) | [中文简体](/README-zh.md) | [日本語](/README-jp.md)
 
 [API Document](/documents/apis.md)
 
