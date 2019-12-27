@@ -7,7 +7,7 @@ from Application.Users.models import UserProfile
 from ArtPress import settings
 from Application.Users.tools import check_password_safety
 
-from application.Manager.media_library_api import *
+from Application.Manager.media_library_api import *
 
 """ Media Library """
 
