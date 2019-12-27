@@ -5,6 +5,8 @@
 
 [API Document](/documents/apis.md)
 
+### すいません、日本語版のドキュメントはまだ翻訳中なので、ご迷惑をお掛けしております。
+
 # What is ArtPress？
 ArtPress is a media-based website management system.
 
