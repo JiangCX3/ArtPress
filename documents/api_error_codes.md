@@ -2,6 +2,7 @@
 
 code | explanation | be used in
 ---|---|---
-200 | 成功 | -
+200 | Successfully | -
+200 | User is not logged | -
 
 
