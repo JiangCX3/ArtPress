@@ -16,41 +16,41 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-import application.Front.views
-import application.Manager.views
-import application.Verify.views
+import Application.Front.views
+import Application.Manager.views
+import Application.Verify.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', application.Front.views.index),
-    path('post/', application.Front.views.post),
+    path('', Application.Front.views.index),
+    path('post/', Application.Front.views.post),
 
-    path('ap-login/', application.Manager.views.login_jump),
-    path('ap-manager/', application.Manager.views.ap_manager),
-    path('ap-manager/home/', application.Manager.views.home),
-    path('ap-manager/ap-cloud/', application.Manager.views.artpress_cloud),
-    path('ap-manager/media-manager/', application.Manager.views.media_library),
-    path('ap-manager/user/out/', application.Manager.views.out),
-    path('ap-manager/user/login/', application.Manager.views.login_p),
-    path('ap-manager/user/register/', application.Manager.views.register_p),
+    path('ap-login/', Application.Manager.views.login_jump),
+    path('ap-manager/', Application.Manager.views.ap_manager),
+    path('ap-manager/home/', Application.Manager.views.home),
+    path('ap-manager/ap-cloud/', Application.Manager.views.artpress_cloud),
+    path('ap-manager/media-manager/', Application.Manager.views.media_library),
+    path('ap-manager/user/out/', Application.Manager.views.out),
+    path('ap-manager/user/login/', Application.Manager.views.login_p),
+    path('ap-manager/user/register/', Application.Manager.views.register_p),
 
-    path('ap-manager/user/me/', application.Manager.views.user_me),
-    path('ap-manager/user/manager/', application.Manager.views.user_manager),
-    path('ap-manager/user/group/', application.Manager.views.user_group),
+    path('ap-manager/user/me/', Application.Manager.views.user_me),
+    path('ap-manager/user/manager/', Application.Manager.views.user_manager),
+    path('ap-manager/user/group/', Application.Manager.views.user_group),
 
-    path('ap-manager/plugs/templates/', application.Manager.views.plugs_templates),
-    path('ap-manager/plugs/plugins/', application.Manager.views.plugs_plugins),
+    path('ap-manager/plugs/templates/', Application.Manager.views.plugs_templates),
+    path('ap-manager/plugs/plugins/', Application.Manager.views.plugs_plugins),
 
-    path('ap-manager/set/common/', application.Manager.views.settings_common),
-    path('ap-manager/set/site/', application.Manager.views.settings_site),
-    path('ap-manager/set/post/', application.Manager.views.settings_post),
-    path('ap-manager/set/safety/', application.Manager.views.settings_safty),
+    path('ap-manager/set/common/', Application.Manager.views.settings_common),
+    path('ap-manager/set/site/', Application.Manager.views.settings_site),
+    path('ap-manager/set/post/', Application.Manager.views.settings_post),
+    path('ap-manager/set/safety/', Application.Manager.views.settings_safty),
 
-    path('verify/code/create/', application.Verify.views.create_verify_code),
+    path('verify/code/create/', Application.Verify.views.create_verify_code),
 
     # Media library APIs
     # Documents at
-    path('api/medialib/getmymedias/', application.Manager.views.ml_getmy_medias),
+    path('api/medialib/getmymedias/', Application.Manager.views.ml_getmy_medias),
 
     # path('test1/', Front.views.test1),
 
