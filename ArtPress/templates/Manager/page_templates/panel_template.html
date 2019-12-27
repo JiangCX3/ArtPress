@@ -1,0 +1,229 @@
+<html>
+<head>
+  <meta http-equiv='Content-type' content='text/htm'>
+  <meta charset="UTF-8">
+  <title>ArtPress Panel - {% block title %} TITLE {% endblock %}</title>
+
+  <link rel="stylesheet" href="/static/manager/css/mdui.min.css">
+  <link rel="stylesheet" href="/static/manager/css/panel.css">
+
+  <script src="/static/manager/js/jquery.min.js"></script>
+  <script src="/static/manager/js/csrf.js"></script>
+  <script src="/static/manager/js/mdui.min.js"></script>
+  {#  <script src="/static/manager/js/panel.js"></script>#}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<script>
+    var inst = new mdui.Drawer("#drawer");
+
+    // Loading Feedback
+    function loading_feedback_in() {
+        $('.loading-feedback').fadeIn(100);
+        $('main').addClass("blur");
+        $(".loading-feedback img").animate({opacity: 1}, 1000);
+
+        //logo shine animate
+        for (let i = 1; i <= 999; i++) {
+            $(".loading-feedback img").animate({opacity: 0.5}, 1000);
+            $(".loading-feedback img").animate({opacity: 1}, 300);
+        }
+    }
+
+    {# Send verify email #}
+
+    function send_verify_email() {
+        //请求验证码Token
+        $.ajax({
+            dataType: "json",
+            url: "/verify/code/create/",
+            success: function (req) {
+                $(".email-verify-token").val(req.message);
+                emailsent_countdown();
+            }
+        });
+    }
+
+
+    var email_count = {{ setting_email_cooldown }};
+
+    function emailsent_countdown() {
+        if (email_count <= 0) {
+            $("#send_email_btn").text("发送邮件").removeClass("blur-dis");
+        } else {
+            $("#send_email_btn").text(email_count + "秒后重试").addClass("blur-dis");
+
+            setTimeout(function () {
+                emailsent_countdown();
+            }, 1000);
+
+            email_count = email_count - 1;
+        }
+    }
+
+    function email_input() {
+        console.debug(this);
+
+        remove_blur_dis()
+    }
+
+    function remove_blur_dis() {
+        $(".blur-dis").animate({"opacity": 1}, 500).removeClass("blur-dis");
+    }
+
+</script>
+
+<style>
+  .loading-feedback {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    z-index: 5000;
+    display: none;
+  }
+
+  .loading-feedback img {
+    position: relative;
+    left: calc(100vw - 200px - 40px);
+    top: calc(100vh - 90px - 30px);
+    opacity: 0;
+  }
+
+  .blur {
+    -webkit-filter: blur(5px); /* Chrome, Opera */
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+
+  /* 专门用于禁用大面积选项 */
+  .blur-dis {
+    opacity: .4;
+
+    filter: grayscale(50%);
+    pointer-events: none;
+
+    transition: background-color 0.2s;
+  }
+
+
+</style>
+
+<body class="mdui-theme-primary-blue-grey mdui-theme-accent-green mdui-drawer-body-left">
+<!--Loading Feedback-->
+<div class="loading-feedback">
+  <img src="/static/images/logo-w.svg" width="200px">
+</div>
+
+<!--左侧菜单-->
+<div class="mdui-drawer mdui-color-theme-700" id="drawer">
+  <div class="mdui-ast" mdui-collapse="{accordion: true}">
+
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">arrow_back</i>
+      <div class="mdui-list-item-content">返回站点</div>
+    </a>
+
+    <a href="/ap-manager/media-manager/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">view_carousel</i>
+      <div class="mdui-list-item-content">媒体库</div>
+    </a>
+
+    <a href="/ap-manager/home/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">dashboard</i>
+      <div class="mdui-list-item-content">控制面板</div>
+    </a>
+
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+        <div class="mdui-list-item-content">账户</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-ast">
+        <a href="/ap-manager/user/me" class="mdui-list-item mdui-ripple">我</a>
+        <a href="/ap-manager/user/manager" class="mdui-list-item mdui-ripple">管理</a>
+        <a href="/ap-manager/user/group" class="mdui-list-item mdui-ripple">权限组</a>
+      </div>
+    </div>
+
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">style</i>
+        <div class="mdui-list-item-content">样式与插件</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-ast">
+        <a href="/ap-manager/plugs/templates" class="mdui-list-item mdui-ripple">主题</a>
+        <a href="/ap-manager/plugs/plugins" class="mdui-list-item mdui-ripple">插件</a>
+        <a href="/ap-manager/ap-cloud" class="mdui-list-item mdui-ripple">获得插件与主题</a>
+      </div>
+    </div>
+
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">touch_app</i>
+        <div class="mdui-list-item-content">站点设置</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-ast">
+        <a href="/ap-manager/set/common" class="mdui-list-item mdui-ripple">通用</a>
+        <a href="/ap-manager/set/site" class="mdui-list-item mdui-ripple">站点</a>
+        <a href="/ap-manager/set/post" class="mdui-list-item mdui-ripple">Post</a>
+        <a href="/ap-manager/set/safety" class="mdui-list-item mdui-ripple">安全</a>
+      </div>
+    </div>
+
+    <a href="/ap-manager/ap-cloud" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">cloud</i>
+      <div class="mdui-list-item-content">连接Artpress云</div>
+    </a>
+
+    <a href="/ap-manager/set/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons">help</i>
+      <div class="mdui-list-item-content">帮助</div>
+    </a>
+  </div>
+</div>
+
+<main>
+  <!--顶部条-->
+  <div class="mdui-appbar mdui-color-theme-900 mdui-shadow-0">
+    <div class="mdui-toolbar">
+      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#drawer'}">
+        <i class="mdui-icon material-icons">menu</i>
+      </a>
+      <a href="/ap-manager/home" class="mdui-typo-headline">
+        {% block bar-title %} TITLE {% endblock %}
+      </a>
+
+      <div class="mdui-toolbar-spacer"></div>
+
+      <p>
+        {{ user }}
+      </p>
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索', delay: 200}">
+        <i class="mdui-icon material-icons">search</i>
+      </a>
+      <a href="/ap-manager/user/out" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '登出', delay: 200}">
+        <i class="mdui-icon material-icons">directions_run</i>
+      </a>
+    </div>
+  </div>
+
+  <div class="mdui-container">
+    <div style="padding: 20px 0">
+      {% block content %}
+        <p>base</p>
+      {% endblock %}
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

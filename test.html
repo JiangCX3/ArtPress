@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>绕过静态博客的文章密码验证 | HelloWorld的小博客</title>
+    <meta name="description" content="绕过静态博客的文章密码验证">
+    <meta name="keywords" content="安全">
+    <meta name="author" content="HelloWorld">
+    <meta name="copyright" content="HelloWorld">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="https://s2.ax1x.com/2019/10/20/KM0NNQ.jpg">
+    <link rel="preconnect" href="//cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="//busuanzi.ibruce.info">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="绕过静态博客的文章密码验证">
+    <meta name="twitter:description" content="绕过静态博客的文章密码验证">
+    <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151625.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="绕过静态博客的文章密码验证">
+    <meta property="og:url"
+          content="http://yoursite.com/2019/12/26/%E7%BB%95%E8%BF%87%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%87%E7%AB%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/">
+    <meta property="og:site_name" content="HelloWorld的小博客">
+    <meta property="og:description" content="绕过静态博客的文章密码验证">
+    <meta property="og:image" content="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151625.png">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script>
+    <script>const autoChangeMode = 'false'
+    var t = Cookies.get("theme");
+    if (autoChangeMode == '1') {
+        const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+        const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+        const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+        const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+        if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+                console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+                now = new Date();
+                hour = now.getHours();
+                isNight = hour < 6 || hour >= 18
+                isNight ? activateDarkMode() : activateLightMode()
+            }
+        } else if (t == 'light') activateLightMode()
+        else activateDarkMode()
+
+
+    } else if (autoChangeMode == '2') {
+        now = new Date();
+        hour = now.getHours();
+        isNight = hour < 6 || hour >= 18
+        if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+        else if (t === 'light') activateLightMode()
+        else activateDarkMode()
+    } else {
+        if (t == 'dark') activateDarkMode()
+        else if (t == 'light') activateLightMode()
+    }
+
+    function activateDarkMode() {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+        }
+    }
+
+    function activateLightMode() {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+        }
+    }</script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css">
+    <link rel="canonical"
+          href="http://yoursite.com/2019/12/26/%E7%BB%95%E8%BF%87%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%87%E7%AB%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/">
+    <link rel="next" title="如何快速完成评课-JQuery的基本使用"
+          href="http://yoursite.com/2019/12/19/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%8C%E6%88%90%E8%AF%84%E8%AF%BE-JQuery%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+    <script>var GLOBAL_CONFIG = {
+        root: '/',
+        algolia: undefined,
+        localSearch: {"path": "search.xml", "languages": {"hits_empty": "找不到您查询的内容:${query}"}},
+        translate: undefined,
+        copy: {
+            success: '复制成功',
+            error: '复制错误',
+            noSupport: '浏览器不支持'
+        },
+        bookmark: {
+            title: 'Snackbar.bookmark.title',
+            message_prev: '按',
+            message_next: '键将本页加入书签'
+        },
+        runtime_unit: '天',
+        runtime: true,
+        copyright: undefined,
+        ClickShowText: undefined,
+        medium_zoom: false,
+        fancybox: true,
+        Snackbar: undefined,
+        baiduPush: false,
+        isHome: false,
+        isPost: true
+
+    }</script>
+</head>
+<body>
+<header>
+    <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">HelloWorld的小博客</a></span><span
+            class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw"
+                                                                         aria-hidden="true"></i></a></span><span
+            class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i
+            class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page"
+                                                                                              href="/archives/"><i
+            class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page"
+                                                                                                 href="/link/"><i
+            class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div></div></span><span class="pull_right"
+                                                                                        id="search_button"><a
+            class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div>
+</header>
+<div id="mobile-sidebar">
+    <div id="menu_mask"></div>
+    <div id="mobile-sidebar-menus">
+        <div class="mobile_author_icon"><img class="avatar-img"
+                                             src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191225162726.jpg"
+                                             onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div>
+        <div class="mobile_post_data">
+            <div class="mobile_data_item is-center">
+                <div class="mobile_data_link"><a href="/archives/">
+                    <div class="headline">文章</div>
+                    <div class="length_num">9</div>
+                </a></div>
+            </div>
+            <div class="mobile_data_item is-center">
+                <div class="mobile_data_link"><a href="/tags/">
+                    <div class="headline">标签</div>
+                    <div class="length_num">5</div>
+                </a></div>
+            </div>
+        </div>
+        <hr>
+        <div class="menus_items">
+            <div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a>
+            </div>
+            <div class="menus_item"><a class="site-page" href="/archives/"><i
+                    class="fa-fw fa fa-archive"></i><span> 文章</span></a></div>
+            <div class="menus_item"><a class="site-page" href="/link/"><i
+                    class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div>
+        </div>
+    </div>
+    <div id="mobile-sidebar-toc">
+        <div class="toc_mobile_headline">目录</div>
+        <div class="sidebar-toc__content">
+            <ol class="toc_mobile_items">
+                <li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link"
+                                                                              href="#准备"><span
+                        class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">准备</span></a></li>
+                <li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link"
+                                                                              href="#开搞"><span
+                        class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">开搞</span></a>
+                    <ol class="toc_mobile_items-child">
+                        <li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link"
+                                                                                      href="#法一"><span
+                                class="toc_mobile_items-number">2.1.</span> <span
+                                class="toc_mobile_items-text">法一</span></a></li>
+                        <li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link"
+                                                                                      href="#法二"><span
+                                class="toc_mobile_items-number">2.2.</span> <span
+                                class="toc_mobile_items-text">法二</span></a></li>
+                        <li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link"
+                                                                                      href="#法三"><span
+                                class="toc_mobile_items-number">2.3.</span> <span
+                                class="toc_mobile_items-text">法三</span></a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"> </i>
+    <div class="auto_open" id="sidebar">
+        <div class="sidebar-toc">
+            <div class="sidebar-toc__title">目录</div>
+            <div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span
+                    class="progress-num">0</span><span class="progress-percentage">%</span>
+                <div class="sidebar-toc__progress-bar"></div>
+            </div>
+            <div class="sidebar-toc__content">
+                <ol class="toc">
+                    <li class="toc-item toc-level-1"><a class="toc-link" href="#准备"><span class="toc-number">1.</span>
+                        <span class="toc-text">准备</span></a></li>
+                    <li class="toc-item toc-level-1"><a class="toc-link" href="#开搞"><span class="toc-number">2.</span>
+                        <span class="toc-text">开搞</span></a>
+                        <ol class="toc-child">
+                            <li class="toc-item toc-level-2"><a class="toc-link" href="#法一"><span class="toc-number">2.1.</span>
+                                <span class="toc-text">法一</span></a></li>
+                            <li class="toc-item toc-level-2"><a class="toc-link" href="#法二"><span class="toc-number">2.2.</span>
+                                <span class="toc-text">法二</span></a></li>
+                            <li class="toc-item toc-level-2"><a class="toc-link" href="#法三"><span class="toc-number">2.3.</span>
+                                <span class="toc-text">法三</span></a></li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <main id="content-outer">
+        <div id="top-container"
+             style="background-image: url(https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151625.png)">
+            <div id="post-info">
+                <div id="post-title">
+                    <div class="posttitle">绕过静态博客的文章密码验证</div>
+                </div>
+                <div id="post-meta">
+                    <time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2019-12-26<span
+                            class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i>
+                        更新于 2019-12-26
+                    </time>
+                    <div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw"
+                                                        aria-hidden="true"></i><span>字数总计:</span><span
+                            class="word-count">746</span><span class="post-meta__separator">|</span><i
+                            class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 2 分钟</span>
+                        <div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i
+                                class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span
+                                id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i
+                                class="fa fa-comments-o post-meta__icon fa-fw"
+                                aria-hidden="true"></i><span>评论数:</span><a
+                                href="/2019/12/26/%E7%BB%95%E8%BF%87%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%87%E7%AB%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/#post-comment"><span
+                                class="gitalk-comment-count comment-count"></span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout layout_post" id="content-inner">
+            <article id="post">
+                <div class="article-container" id="post-content"><p>不多说，直接开始</p>
+                    <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1>
+                    <p>在对该博客进行观察后，发现这个博客是使用了静态博客软件搭建的(本地由md文件生成html文件部署到服务器)</p>
+                    <p>从这些地方也可以看出来</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226144850.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226144850.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226144952.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226144952.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>图一说明这是使用了一个静态博客程序</p>
+                    <p>图二说明博客部署在GitHub page上，这个服务只能部署静态界面</p>
+                    <h1 id="开搞"><a href="#开搞" class="headerlink" title="开搞"></a>开搞</h1>
+                    <p>既然验证在前端，那直接查看前端源代码看看能不能解决</p>
+                    <p>访问需要密码的界面就会弹出以下提示框</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226144639.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226144639.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>该提示框无法禁止弹出，并且如果密码错误或者是点击取消，页面将会重定向到其他页面</p>
+                    <h2 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h2>
+                    <p>如何弹出一个这样的提示框？学过前端的人应该知道可以用js实现</p>
+                    <p>在chrome内的对应网页设置内有这样的一个设置</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226145431.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226145431.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>我们可以将JavaScript禁用</p>
+                    <p>禁用之后，访问页面即可看到文章</p>
+                    <p><strong>但是！！！！</strong> 由于禁用了JavaScript，页面的部分效果将无法加载，页面将无法正常显示</p>
+                    <h2 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h2>
+                    <p>有没有办法在不禁用JavaScript的情况下访问呢？</p>
+                    <p>办法是有的，使用f12先看看源代码</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226145802.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226145802.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>居然无法正确显示。。。。。</p>
+                    <p>当然，这难不倒我们，只需要用一个软件来发送http请求并获取内容即可</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226145952.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226145952.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>查看代码</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226150052.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226150052.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>我们发现了校验密码的代码，<code>pwd</code>变量内存储了正确密码的sha256值，通过在线破解网站即可得到密码明文，输入即可解决</p>
+                    <h2 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h2>
+                    <p>但是上面的方法依然不完美，在线破解不是万能的，一部分记录是收费的，也不是所有sha值都可以查询到对应的明文</p>
+                    <p>虽然我们在上面的源代码中已经可以得到关于文章的大部分信息了，但是为了追求完美还是再想想别的方案</p>
+                    <p>对于<code>github.io</code>的域名搭建的博客，说不定可以到对应的GitHub page仓库内clone整个网站的代码，对刚刚的验证代码进行修改，在本地打开</p>
+                    <p>从另一个方面看，如果我们可以拦截浏览器收到的数据，把对应的密码验证代码删除是不是也可以达到效果</p>
+                    <p><strong>开始操作</strong></p>
+                    <p>打开<code>BurpSuite</code>,需对浏览器进行配置,在对https网站进行抓取的时候还需配置证书，这部分网上教程很多就不多多赘述了</p>
+                    <p>打开软件，在如图位置的复选框打勾即可拦截服务器发回的数据</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226150747.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226150747.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>找到页面的数据，对于其他数据包，按下<code>Forward</code>放行</p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151044.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151044.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>改为以下内容并点击<code>Forward</code></p>
+                    <p><a href="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151122.png" target="_blank"
+                          rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title
+                                                                                                  data-src="https://cdn.jsdelivr.net/gh/mzdluo123/blog_imgs/img/20191226151122.png"
+                                                                                                  class="lazyload"></a>
+                    </p>
+                    <p>即可绕过密码并且不影响页面显示效果</p>
+                    <p>对于这个软件来说，功能还有很多，更多功能可以百度学习</p>
+                </div>
+            </article>
+            <div class="post-copyright">
+                <div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span
+                        class="post-copyright-info"><a href="mailto:undefined" target="_blank"
+                                                       rel="noopener">HelloWorld</a></span></div>
+                <div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span
+                        class="post-copyright-info"><a
+                        href="http://yoursite.com/2019/12/26/%E7%BB%95%E8%BF%87%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%87%E7%AB%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/">http://yoursite.com/2019/12/26/%E7%BB%95%E8%BF%87%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%87%E7%AB%A0%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81/</a></span>
+                </div>
+                <div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span
+                        class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a
+                        href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a
+                        href="http://yoursite.com">HelloWorld的小博客</a>！</span></div>
+            </div>
+            <div class="tag_share">
+                <div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8/">安全 </a>
+                </div>
+                <div class="post_share"></div>
+            </div>
+            <nav class="pagination_post" id="pagination">
+                <div class="next-post pull-full"><a
+                        href="/2019/12/19/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%8C%E6%88%90%E8%AF%84%E8%AF%BE-JQuery%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"><img
+                        class="next_cover lazyload"
+                        data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png"
+                        onerror="onerror=null;src='/img/404.jpg'">
+                    <div class="label">下一篇</div>
+                    <div class="next_info"><span>如何快速完成评课-JQuery的基本使用</span></div>
+                </a></div>
+            </nav>
+            <hr>
+            <div id="post-comment">
+                <div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span>
+                </div>
+                <div id="gitalk-container"></div>
+                <script>
+                    var gitalk = new Gitalk({
+                        clientID: 'a7f89493fe9d480aaff3',
+                        clientSecret: 'da80ecf2ad0dff7a81bad3222eedd98cba397719',
+                        repo: 'mzdluo123.github.io',
+                        owner: 'mzdluo123',
+                        admin: 'mzdluo123',
+                        id: md5(decodeURI(location.pathname)),
+                        language: 'zh-CN',
+                        updateCountCallback: commentCount
+                    })
+                    gitalk.render('gitalk-container')
+
+                    function commentCount(n) {
+                        document.getElementsByClassName('gitalk-comment-count')[0].innerHTML = n
+                    }</script>
+            </div>
+        </div>
+    </main>
+    <footer id="footer" data-type="color">
+        <div id="footer-wrap">
+            <div class="copyright">&copy;2019 By HelloWorld</div>
+            <div class="framework-info"><span>驱动 </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span
+                    class="footer-separator">|</span><span>主题 </span><a
+                    href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a>
+            </div>
+        </div>
+    </footer>
+</div>
+<section class="rightside" id="rightside">
+    <div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus"
+                                                                                            id="font_plus"
+                                                                                            title="放大字体"></i><i
+            class="fa fa-minus" id="font_minus" title="缩小字体"></i><i class="darkmode fa fa-moon-o" id="darkmode"
+                                                                    title="夜间模式"></i></div>
+    <div id="rightside-config-show">
+        <div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div>
+        <a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments"> </i></a><i
+            class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i
+            class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
+<script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false"
+        src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-nest.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script>
+<div class="search-dialog" id="local-search">
+    <div class="search-dialog__title" id="local-search-title">本地搜索</div>
+    <div id="local-input-panel">
+        <div id="local-search-input">
+            <div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div>
+        </div>
+    </div>
+    <hr>
+    <div id="local-search-results">
+        <div id="local-hits"></div>
+        <div id="local-stats">
+            <div class="local-search-stats__hr" id="hr"><span>由</span> <a
+                    href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener"
+                    style="color:#49B1F5;">hexo-generator-search</a>
+                <span>提供支持</span></div>
+        </div>
+    </div>
+    <span class="search-close-button"><i class="fa fa-times"></i></span></div>
+<div class="search-mask"></div>
+</body>
+</html>
