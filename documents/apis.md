@@ -50,6 +50,7 @@ code | explanation
 
 
 ### `api/medialib/getmedias/`
+Get somebody medias.
 #### Param
 Method: `Post`
 
