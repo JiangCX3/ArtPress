@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ArtPress',
-    'application.Users',
-    'application.Verify',
-    'application.Manager'
+    'Application.Users',
+    'Application.Verify',
+    'Application.Manager'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'application.Manager.login_middleware.LoginMiddleware'
+    'Application.Manager.login_middleware.LoginMiddleware'
 ]
 
 ROOT_URLCONF = 'ArtPress.urls'
@@ -84,8 +84,8 @@ DATABASES = {
     }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'artpress-test',
-    #     'USER': 'artpress-test',
+    #     'NAME': 'artpress',
+    #     'USER': 'artpress',
     #     'PASSWORD': '123456',
     #     'HOST': '127.0.0.1',
     #     'PORT': '3306',

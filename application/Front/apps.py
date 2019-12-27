@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 
 class FrontConfig(AppConfig):
-    name = 'Front'
+    name = 'Application.Front'
