@@ -5,6 +5,7 @@
 
 [API Document](/documents/apis.md)
 
+
 # What is ArtPress？
 ArtPress is a media-based website management system.
 
@@ -60,7 +61,6 @@ python manage.py runserver 8000
 ```
 
 Visit [http://localhost:8000/](http://localhost:8000/)，Welcome！
-
 
 
 ## In Linux

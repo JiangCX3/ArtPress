@@ -51,6 +51,7 @@ urlpatterns = [
     # Media library APIs
     # Documents at
     path('api/medialib/getmymedias/', application.Manager.views.ml_getmy_medias),
+    path('api/medialib/getmedias/', application.Manager.views.ml_get_medias),
 
     # path('test1/', Front.views.test1),
 

@@ -82,14 +82,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'artpress-test',
-    #     'USER': 'artpress-test',
-    #     'PASSWORD': '123456',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
-    # }
 }
 
 # Password validation
@@ -148,4 +140,8 @@ VERIFY_CODE_COOLDOWN = 1
 VERIFY_CODE_EMAIL_COOLDOWN = 120
 
 # ==== Media Library ====
-MEDIA_LIBRATY_DIR = "medias"
+MEDIA_LIBRATY_DIR = "medias/"
+
+SITE_URL = "http://localhost:8000/"
+
+MEDIA_RESOURCES_URL = SITE_URL + "static/"
