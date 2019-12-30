@@ -1,0 +1,100 @@
+.ap-img-stream {
+
+}
+
+.ap-img-stream .imgbox {
+    width: calc(20% - 1% * 2);
+    float: left;
+    padding: 1%;
+
+}
+
+.imgbox-info {
+    padding-top: 3px;
+}
+
+.imgbox {
+
+}
+
+.imgbox img {
+    transition: all 200ms linear;
+    cursor: pointer;
+}
+
+.imgbox img:hover {
+    opacity: 0.8;
+}
+
+.imgbox .img-filename {
+    opacity: 0.5;
+    font-size: 11px;
+    float: left;
+    transition: all 200ms linear;
+    cursor: default;
+}
+
+.imgbox .img-filename:hover {
+    opacity: 0.8;
+    font-size: 11px;
+    float: left;
+}
+
+
+.imgbox .level {
+    opacity: 0.5;
+    font-size: 10px !important;
+    float: right;
+    cursor: pointer;
+}
+
+.level-starimg {
+    height: 12px;
+    transition: all 200ms linear;
+}
+
+.level-starimg:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+}
+
+.color-tag {
+    width: 10px;
+    height: 9px;
+    float: right;
+    border: rgba(0, 0, 0, 0.5) solid 1px;
+    margin-left: 3px;
+}
+
+
+.red {
+    background: #bf0000;
+}
+
+.green {
+    background: #00bf18;
+}
+
+.orange {
+    background: #bf7100;
+}
+
+.yellow {
+    background: #bfb700;
+}
+
+.color-tag-list {
+    position: absolute;
+
+    background: #ffffff;
+    border: 1px rgba(0, 0, 0, 0.21) solid;
+    width: 150px;
+    padding: 3px;
+
+    /*display: none;*/
+}
+
+.color-tag-list div {
+    float: unset!important;
+    margin: 2px 0;
+}

@@ -139,9 +139,10 @@ VERIFY_CODE_COOLDOWN = 1
 
 VERIFY_CODE_EMAIL_COOLDOWN = 120
 
-# ==== Media Library ====
-MEDIA_LIBRATY_DIR = "medias/"
+# ==== URL ====
 
 SITE_URL = "http://localhost:8000/"
 
-MEDIA_RESOURCES_URL = SITE_URL + "static/"
+MEDIA_LIBRATY_DIR = "medias/"
+
+MEDIA_RESOURCES_URL = SITE_URL + "static/" + MEDIA_LIBRATY_DIR

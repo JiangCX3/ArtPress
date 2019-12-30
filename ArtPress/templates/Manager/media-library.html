@@ -4,15 +4,120 @@
 {% block bar-title %} 媒体库 {% endblock %}
 
 {% block content %}
-  <div class="mdui-row">
-    <div class="mdui-col-xs-12">
-      <div class="mdui-card">
-        <div class="mdui-card-primary">
-          <div class="mdui-card-primary-title">内置版媒体库</div>
-          <div class="mdui-card-primary-subtitle">如需更强大的媒体库功能，请安装LightMedia插件</div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!--
+    ==== MEDIA LIB DEBUG INFO ====
+    {{ medias }}
+    ==== MEDIA LIB DEBUG INFO  ====
+    -->
 
+    <script src="/static/manager/js/medialibrary.js"></script>
+
+    <div class="mdui-row">
+        <div class="mdui-col-xs-12">
+            <div class="mdui-card mdui-color-blue-grey-700">
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">欢迎使用内置版媒体库</div>
+                    <div class="mdui-card-primary-subtitle">如需更强大的媒体库功能，请安装LightMedia插件</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!--Header Panel-->
+    <div class="mdui-row">
+        <div class="mdui-col-xs-12">
+            <div class="mdui-appbar">
+                <div class="mdui-toolbar mdui-color-theme">
+                    <div class="mdui-col-xs-2" style="opacity: 1">
+                        <div style="width: 36px;float:left;">
+                            <img src="/static/manager/icons/img-small.png" width="36">
+                        </div>
+                        <div style="width:calc(100% - 36px*2);float:left;">
+                            <label class="mdui-slider">
+                                <input type="range" step="1" min="1" max="10"/>
+                            </label>
+                        </div>
+                        <div style="width: 36px;float:right;">
+                            <img src="/static/manager/icons/img-big.png" width="36">
+                        </div>
+                    </div>
+
+                    <a href="javascript:;">共10个对象</a>
+
+                    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+                        <i class="mdui-icon material-icons">search</i>
+                    </a>
+
+                    <div class="mdui-toolbar-spacer"></div>
+                    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+                        <i class="mdui-icon material-icons">file_upload</i>
+                    </a>
+                    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+                        <i class="mdui-icon material-icons">refresh</i>
+                    </a>
+                    <a href="javascript:toggleView();" class="mdui-btn mdui-btn-icon">
+                        <i class="mdui-icon material-icons" id="editopen">edit</i>
+                        <i class="mdui-icon material-icons" id="editclose" style="display:none;">close</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleView() {
+            $("#media-library-simpleView").slideToggle();
+            $("#media-library-editView").slideToggle();
+            $("#editclose").toggle();
+            $("#editopen").toggle();
+        }
+
+    </script>
+
+    <!--Medias-->
+    <div class="mdui-row">
+        <!--简单视图-->
+        <div class="mdui-col-xs-12 ap-img-stream" id="media-library-simpleView">
+            <h3>简单视图</h3>
+            {% for media_data in medias.data %}
+                <div class="imgbox">
+                    <img src="{{ media_data.thum }}" class="mdui-img-fluid">
+
+                    <div class="imgbox-info">
+                        <div class="img-filename">{{ media_data.file }}</div>
+                        <div class="color-tag red" id="img-colortag-{{ media_data.id }}"></div>
+
+                        <div class="level" id="">
+                            <img class="level-starimg" src="/static/manager/icons/star.png" alt="1">
+                            <img class="level-starimg" src="/static/manager/icons/star.png" alt="1">
+                            <img class="level-starimg" src="/static/manager/icons/star.png" alt="1">
+                            <img class="level-starimg" src="/static/manager/icons/star-n.png" alt="0">
+                            <img class="level-starimg" src="/static/manager/icons/star-n.png" alt="0">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!--编辑视图-->
+        <div class="mdui-col-xs-12 ap-img-stream" id="media-library-editView" style="display: none">
+            <h3>编辑视图</h3>
+            {% for media_data in medias.data %}
+                <div class="imgbox">
+                    <img src="{{ media_data.thum }}" class="mdui-img-fluid">
+
+                    <div class="imgbox-info">
+                        <input type="checkbox"/>
+                        <div class="img-filename">{{ media_data.filename }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!--Bottom Panel-->
+    <div class="mdui-row">
+
+    </div>
 {% endblock %}

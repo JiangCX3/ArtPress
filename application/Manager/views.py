@@ -14,6 +14,7 @@ from application.Manager.media_library_api import *
 
 def media_library(request):
     return render(request, 'Manager/media-library.html', {
+        "medias": MediaLibrary(request).get_my_medias()
     })
 
 
