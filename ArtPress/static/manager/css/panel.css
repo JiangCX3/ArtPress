@@ -54,6 +54,7 @@
 
 .level-starimg {
     height: 12px;
+    border-radius: 100%;
     transition: all 200ms linear;
 }
 
@@ -66,7 +67,7 @@
     width: 10px;
     height: 9px;
     float: right;
-    border: rgba(0, 0, 0, 0.5) solid 1px;
+    border: rgba(0, 0, 0, 0.21) solid 1px;
     margin-left: 3px;
 }
 

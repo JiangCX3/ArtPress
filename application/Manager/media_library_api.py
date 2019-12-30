@@ -37,6 +37,7 @@ class MediaLibrary:
                 "filename": media.file,
                 "exif": media.exif,
                 "rating": media.rating,
+                "color": media.color_tag,
                 "res": settings.MEDIA_RESOURCES_URL + media.file,
                 "thum": settings.MEDIA_RESOURCES_URL + media.file,
                 "update_time": media.update_date.strftime('%Y-%m-%d %H:%M:%S'),

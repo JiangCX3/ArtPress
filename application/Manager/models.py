@@ -11,3 +11,4 @@ class Medias(models.Model):
     upload_date = models.DateTimeField('Upload date', default=timezone.now)
     update_date = models.DateTimeField('Upload date', default=timezone.now)
     rating = models.IntegerField('EXIF Rating (1-5 star)', default=0)
+    color_tag = models.CharField('Color Tag', default="none", max_length=12)
