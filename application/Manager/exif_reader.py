@@ -1,3 +1,4 @@
+import json
 import os
 import random
 import shutil
@@ -50,10 +51,17 @@ class MediaLibraryExif:
 
         return object_filepath
 
-
-if __name__ == '__main__':
-    ml_exif = MediaLibraryExif(
-        filename="exif-test.jpg",
-    )
-
-    print(ml_exif.create_temp_noexif())
+    # @staticmethod
+    # def kill_bytes(bytes_dict):
+    #     """
+    #     让dict中那些bytes字符串瞬间暴毙
+    #
+    #     :param bytes_dict:
+    #     :return:
+    #     """
+    #
+    #     none_of_bytes = str(bytes_dict).replace("b'", "'").replace('b"', '"').replace("'", '"')
+    #     print(none_of_bytes)
+    #     none_of_bytes = json.loads(none_of_bytes)
+    #
+    #     return none_of_bytes

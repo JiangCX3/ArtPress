@@ -1,11 +1,14 @@
 import json
 
+import demjson
+import piexif
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from ArtPress import settings
-from application.Manager.models import Medias
+from .models import Medias
+from .exif_reader import MediaLibraryExif
 
 
 class MediaLibrary:
@@ -25,14 +28,15 @@ class MediaLibrary:
 
         return_datas = []
         for media in medias:
-            print(media)
-
             inf = {
                 "id": media.id,
                 "author": {
                     "uid": author.id,
                     "name": str(author)
                 },
+                "filename": media.file,
+                "exif": media.exif,
+                "rating": media.rating,
                 "res": settings.MEDIA_RESOURCES_URL + media.file,
                 "thum": settings.MEDIA_RESOURCES_URL + media.file,
                 "update_time": media.update_date.strftime('%Y-%m-%d %H:%M:%S'),

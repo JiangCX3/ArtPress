@@ -40,6 +40,10 @@
     float: left;
 }
 
+.imgfile-checkbox {
+    float: left;
+    width: 20px;
+}
 
 .imgbox .level {
     opacity: 0.5;
@@ -65,7 +69,6 @@
     border: rgba(0, 0, 0, 0.5) solid 1px;
     margin-left: 3px;
 }
-
 
 .red {
     background: #bf0000;
@@ -95,6 +98,6 @@
 }
 
 .color-tag-list div {
-    float: unset!important;
+    float: unset !important;
     margin: 2px 0;
 }
