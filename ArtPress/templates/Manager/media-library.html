@@ -10,6 +10,27 @@
     ==== MEDIA LIB DEBUG INFO  ====
     -->
 
+  <script>
+      function toggleView() {
+          $("#media-library-simpleView").toggle();
+          $("#media-library-editView").toggle();
+          $("#editclose").toggle();
+          $("#editopen").toggle();
+          $("#bar-editView-title").toggle();
+          $("#bar-simpleView-title").toggle();
+      }
+
+      function rat_star(d) {
+          console.log(d);
+          $(d).attr("src", "/static/manager/icons/star.png");
+      }
+
+      function rat_unstar(d) {
+          $(d).attr("src", "/static/manager/icons/star-n.png");
+      }
+
+  </script>
+
   <script src="/static/manager/js/medialibrary.js"></script>
 
   <div class="mdui-row">
@@ -44,7 +65,8 @@
             </div>
           </div>
 
-          <a href="javascript:;">共10个对象</a>
+          <a href="javascript:void(0)" id="bar-simpleView-title">共10个对象</a>
+          <a href="javascript:void(0)" id="bar-editView-title" style="display: none">编辑视图: (0/10)已选择</a>
 
           <a href="javascript:;" class="mdui-btn mdui-btn-icon">
             <i class="mdui-icon material-icons">search</i>
@@ -66,30 +88,10 @@
     </div>
   </div>
 
-  <script>
-      function toggleView() {
-          $("#media-library-simpleView").toggle();
-          $("#media-library-editView").toggle();
-          $("#editclose").toggle();
-          $("#editopen").toggle();
-      }
-
-      function rat_star(d) {
-              console.log(d);
-              $(d).attr("src", "/static/manager/icons/star.png");
-          }
-
-          function rat_unstar(d) {
-              $(d).attr("src", "/static/manager/icons/star-n.png");
-          }
-
-  </script>
-
   <!--Medias-->
   <div class="mdui-row">
     <!--简单视图-->
     <div class="mdui-col-xs-12 ap-img-stream" id="media-library-simpleView">
-      <h3>简单视图</h3>
       {% for media_data in medias.data %}
         <script>
             //rating ad
@@ -125,7 +127,6 @@
 
     <!--编辑视图-->
     <div class="mdui-col-xs-12 ap-img-stream" id="media-library-editView" style="display: none">
-      <h3>编辑视图</h3>
       {% for media_data in medias.data %}
         <div class="imgbox">
           <img src="{{ media_data.thum }}" class="mdui-img-fluid">
