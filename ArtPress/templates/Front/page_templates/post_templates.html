@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Title {% endblock %}</title>
+    <link rel="stylesheet" href="/static/front/css/style.css">
+</head>
+<body>
+<!--Header-->
+<div class="main-content header-bar typo-font">
+    <div class="header-bar-title">
+        <a href="/">
+            Artpress
+        </a>
+    </div>
+    <div class="header-bar-nav">
+        <a href="#" class="heder-bar-option">
+            Search
+        </a>
+        <a href="#" class="heder-bar-option">
+            Artist
+        </a>
+        <a href="#" class="heder-bar-option">
+            Tags
+        </a>
+        <a href="#" class="heder-bar-option">
+            About
+        </a>
+    </div>
+</div>
+{% block content %}
+
+{% endblock %}
+<footer>
+    <div class="footer-content">
+        <div class="main-content">
+            <h1>More About Me</h1>
+        </div>
+    </div>
+    <div class="footer-copyright typo-font">
+        ©2019 Artpress. Theme ONE-PX by Artpress Team.
+    </div>
+</footer>
+</body>
+</html>

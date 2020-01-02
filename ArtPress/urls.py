@@ -38,7 +38,7 @@ urlpatterns = [
     path('ap-manager/user/manager/', application.Manager.views.user_manager),
     path('ap-manager/user/group/', application.Manager.views.user_group),
 
-    path('ap-manager/plugs/templates/', application.Manager.views.plugs_templates),
+    path('ap-manager/plugs/page_templates/', application.Manager.views.plugs_templates),
     path('ap-manager/plugs/plugins/', application.Manager.views.plugs_plugins),
 
     path('ap-manager/set/common/', application.Manager.views.settings_common),

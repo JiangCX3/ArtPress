@@ -1,4 +1,4 @@
-@import url('/static/fonts/Baskervville-Regular.ttf');
+@import url('/static/front/fonts/Baskervville-Regular.ttf');
 
 body {
     margin: 0;
@@ -124,13 +124,13 @@ a {
 
 .image-full-width {
     padding: 50px 22px;
+    left: 10vw;
+    width: 80vw;
+    height: auto;
 }
 
 .image-full-width img {
-    position: absolute;
-    /*top:0;*/
-    left: 10vw;
-    width: 80vw;
+    width: 100%;
 }
 
 /*post的主图及介绍文字*/
@@ -160,4 +160,80 @@ a {
 
 .post-commom-picture {
 
+}
+
+.header-bar {
+    height: 120px;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.11);*/
+    font-style: italic;
+}
+
+.header-bar-title {
+    font-size: 60px;
+    font-weight: 800;
+    float: left;
+    padding: 20px 0;
+}
+
+.header-bar-nav {
+    float: right;
+    font-size: 25px;
+    padding: 45px 0;
+}
+
+.heder-bar-option {
+    padding: 0 10px;
+    color: rgba(0, 0, 0, 0.9);
+    transition: all 200ms linear;
+}
+
+.heder-bar-option:hover {
+    opacity: 0.6;
+}
+
+.photo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.big-photo {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.post-title {
+    font-style: italic;
+    font-size: 40px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.post-author {
+    font-style: italic;
+    font-size: 30px;
+    padding: 10px 0;
+    font-weight: 800;
+    opacity: .6;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+.footer-content {
+    height: 100vh;
+    padding-top: 40px;
+    background: rgba(0, 0, 0, 0.87);
+    color: #ffffff;
+}
+
+.footer-copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 150px 10px;
+    font-style: italic;
 }
